@@ -1,0 +1,234 @@
+/*! fancyBox v2.1.0 fancyapps.com | fancyapps.com/fancybox/#license */
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	vertical-align: top;
+}
+
+.fancybox-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 8020;
+}
+
+.fancybox-skin {
+	text-shadow: none;
+}
+
+.fancybox-opened {
+	z-index: 8030;
+}
+
+.fancybox-opened .fancybox-skin {
+
+}
+
+.fancybox-outer, .fancybox-inner {
+	position: relative;
+}
+
+.fancybox-inner {
+	overflow: hidden;
+}
+
+.fancybox-type-iframe .fancybox-inner {
+	-webkit-overflow-scrolling: touch;
+}
+
+.fancybox-error {
+	color: #444;
+	font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 15px;
+	white-space: nowrap;
+}
+
+.fancybox-image, .fancybox-iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.fancybox-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#fancybox-loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -22px;
+	margin-left: -22px;
+	opacity: 0.8;
+	cursor: pointer;
+	z-index: 8060;
+}
+
+#fancybox-loading div {
+	width: 44px;
+	height: 44px;
+	background: url( 'images/ajax-loader.gif' ) center center no-repeat;
+}
+
+.fancybox-close {
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 8040;
+}
+
+.fancybox-tmp {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	visibility: hidden;
+}
+
+/* Overlay helper */
+
+.fancybox-lock {
+	overflow: hidden;
+}
+
+.fancybox-overlay {
+	position : absolute;
+	top : 0;
+	left : 0;
+	overflow : hidden;
+	display : none;
+	z-index : 8010;
+	background : #FFFFFF;
+	background : rgba(245, 245, 245, .85);
+}
+
+.fancybox-overlay-fixed {
+	position : fixed;
+	bottom : 0;
+	right : 0;
+}
+
+.fancybox-lock .fancybox-overlay {
+	overflow: auto;
+	overflow-y: scroll;
+}
+
+.fancybox-outer {
+	padding: 8px 8px 10px;
+
+	position: relative;
+	
+	.center-block;
+	
+	&:before {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		.size(104%, 100%);
+	}
+	
+	.fancybox-inner {
+		position: relative;
+		z-index: 4;
+		background: @white;
+
+		.box-shadow(rgba(0, 0, 0, .20) 0 1px 3px);
+		
+		#main {
+			padding-top: 40px;
+		}
+	}
+}
+
+.section-modal {
+	background: url(../images/diamond.gif) repeat;
+	border: 10px solid @white;
+	display: none;
+
+	.size(auto, 100%);
+	.box-sizing(border-box);
+}
+
+#sections {
+	.reset-list;
+
+	li {
+		position: relative;
+
+		.size(50%, auto);
+		.pull-left;
+
+		&:nth-child(odd) a:after {
+			content: " ";
+			position: absolute;
+			top: 10%;
+			right: 0;
+			border-right: 1px solid lighten(@grayLighter, 8%);
+
+			.size(1px, 80%);
+		}
+
+		&:nth-last-child(1) a:before,
+		&:nth-last-child(2) a:before {
+			display: none;
+		}
+	}
+
+	a {
+		#font > .sans-serif(14px, bold, normal);
+		color: @grayLight;
+		text-transform: uppercase;
+		text-align: center;
+		text-decoration: none;
+
+		margin: 10px 0;
+		padding: 40px 0;
+
+		.block;
+
+		i {
+			font-size: 60px;
+			color: @gray;
+
+			margin-bottom: 8px;
+
+			.block;
+		}
+
+		&:before {
+			content: ' ';
+			border-bottom: 1px solid lighten(@grayLighter, 8%);
+			position: absolute;
+			left: 10%;
+			bottom: 0;
+
+			.size(80%, 1px);
+		}
+
+		&:hover {
+			color: @red;
+
+			i {
+				color: @red;
+			}
+		}
+	}
+}

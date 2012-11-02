@@ -1,0 +1,73 @@
+#colophon {
+	padding: 42px 0 38px;
+	background: #fdfdfd;
+	border-top: 1px dashed lighten(@grayLighter, 8%);
+	position: relative;
+
+	.clearfix;
+
+	a {
+		color: @gray;
+		text-decoration: none;
+		vertical-align: middle;
+
+		i {
+			vertical-align: middle;
+
+			margin-right: 5px;
+		}
+	}
+
+	&:before {
+		content: " ";
+		position: absolute;
+		top: 1px;
+		left: 0;
+		background: lighten(@grayLighter, 8%);
+
+		.size(100%, 1px);
+	}
+}
+
+#contact {
+	margin-left: 60px;
+
+	.pull-left;
+
+	a {
+		margin-right: 40px;
+
+		i {
+			font-size: 28px;
+			color: @grayLight;
+		}
+
+		&:hover {
+			i {
+				color: @gray;
+			}
+		}
+	}
+}
+
+#social {
+	margin-right: 60px;
+	
+	.pull-right;
+
+	a {
+		margin-right: 20px;
+
+		i {
+			font-size: 20px;
+		}
+
+		&.twitter i {
+			color: #00aced;
+		}
+
+		&.facebook i {
+			color: #3b5998;
+		}
+	}
+}

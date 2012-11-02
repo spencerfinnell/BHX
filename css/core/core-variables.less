@@ -1,0 +1,55 @@
+/**
+ * Grays
+ */
+@black:                 #000;
+@grayDarker:            #111111;
+@grayDark:              #262626;
+@gray:                  #3f3f3f;
+@grayLight:             #7d7d7d;
+@grayLighter:           #d7d7d7;
+@white:                 #fff;
+
+
+/**
+ * Accent Colors
+ */
+@blue:                  #6298c7;
+@green:                 #a0b046;
+@yellow:                #f2c94e;
+@red:                   #af0000;
+@purple:                #77507d;
+
+/**
+ * Scaffolding
+ */
+@bodyBackground:        #ebebe7;
+@textColor:             @gray;
+@wrapperBackground:     @white;
+
+/**
+ * Links
+ */
+@linkColor:             @red;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+/**
+ * Typography
+ */
+@sansFontFamily:        'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@serifFontFamily:       'Glegoo', Georgia, "Times New Roman", Times, serif;
+@serifFontFamilyAlt:    'Patua One', @serifFontFamily;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:          12px;
+@baseFontFamily:        @serifFontFamily;
+@baseLineHeight:        20px;
+@altFontFamily:         @sansFontFamily;
+
+/**
+ * Grid
+ */
+@gridColumns:           16;
+@gridColumnWidth:       40px;
+@gridGutterWidth:       20px;
+@gridRowWidth:          (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
