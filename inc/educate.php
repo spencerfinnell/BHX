@@ -15,7 +15,7 @@ add_filter( 'pre_get_posts', 'bhx_filter_query_educational' );
 function bhx_post_type_educational_sites() {
 	$labels = array(
 		'name'               => __( 'Historic Sites', 'bhx' ),
-		'singular_name'      => __( 'Site', 'bhx' ),
+		'singular_name'      => __( 'Historic Site', 'bhx' ),
 		'add_new'            => __( 'Add New', 'bhx' ),
 		'add_new_item'       => __( 'Add New Site', 'bhx' ),
 		'edit_item'          => __( 'Edit Site', 'bhx' ),
@@ -41,7 +41,7 @@ function bhx_post_type_educational_sites() {
 		'hierarchical'        => false,
 		'menu_position'       => null,
 		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx_educate'
+		'show_in_menu'        => 'bhx'
 	);
 	
 	register_post_type( 'site', $args );
@@ -88,7 +88,7 @@ function bhx_post_type_educational_resources() {
 		'add_new_item'       => __( 'Add New Resource', 'bhx' ),
 		'edit_item'          => __( 'Edit Resource', 'bhx' ),
 		'new_item'           => __( 'New Resource', 'bhx' ),
-		'all_items'          => __( 'Resources', 'bhx' ),
+		'all_items'          => __( 'Educate', 'bhx' ),
 		'view_item'          => __( 'View Resource', 'bhx' ),
 		'search_items'       => __( 'Search Resources', 'bhx' ),
 		'not_found'          => __( 'No educational resources found', 'bhx' ),
@@ -109,7 +109,7 @@ function bhx_post_type_educational_resources() {
 		'hierarchical'        => false,
 		'menu_position'       => null,
 		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx_educate'
+		'show_in_menu'        => 'bhx'
 	);
 	
 	register_post_type( 'educational', $args );

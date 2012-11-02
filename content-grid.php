@@ -15,9 +15,20 @@
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
 
-		<?php if ( is_search() || is_archive() ) : ?>
+		<?php if ( is_search() || is_post_type_archive( 'visit' ) ) : ?>
 		<div class="entry-type">
-			<a href="#" class="button flat">Historic Site</a> <a href="#" class="all">View All</a>
+			<?php if ( is_post_type_archive( 'visit' ) ) : ?>
+				<?php $type = wp_get_object_terms( $post->ID, array( 'visit-type' ) ); ?>
+				<a href="<?php echo get_term_link( $type[0], 'visit-type' ); ?>" class="button flat"><?php echo esc_attr( $type[0]->name ); ?></a>
+				<a href="<?php echo get_term_link( $type[0], 'visit-type' ); ?>" class="all"><?php _e( 'View All', 'bhx' ); ?></a>
+			<?php else : ?>
+				<?php
+					$post_type_obj = get_post_type_object( get_post_type() );
+					$title = apply_filters( 'post_type_archive_title', $post_type_obj->labels->name );
+				?>
+				<a href="<?php echo get_post_type_archive_link( get_post_type() ); ?>" class="button flat"><?php echo esc_attr( $title ); ?></a>
+				<a href="<?php echo get_post_type_archive_link( get_post_type() ); ?>" class="all"><?php _e( 'View All', 'bhx' ); ?></a>
+			<?php endif; ?>
 		</div>
 		<?php endif; ?>
 	</div>

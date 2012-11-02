@@ -2,10 +2,10 @@
 
 function bhx_menu_pages() {
 	add_menu_page(
-		__( 'Educate', 'bhx' ),
-		__( 'Educate', 'bhx' ),
+		__( 'BHX', 'bhx' ),
+		__( 'BHX', 'bhx' ),
 		'edit_pages',
-		'bhx_educate',
+		'bhx',
 		'bhx_admin_menu_page',
 		'',
 		6

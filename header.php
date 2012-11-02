@@ -44,7 +44,7 @@
 		<ul id="actions">
 			<li><a href="<?php echo get_post_type_archive_link( 'educational' ); ?>" data-section="#section-educate" class="educate fancybox"><span><i data-icon="&#x28;"></i></span> Educate</a>
 			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>" class="sites"><span><i data-icon="&#x27;"></i></span> Sites</a>
-			<li><a href="#section-visit" class="visit fancybox"><span><i data-icon="&#x23;"></i></span> Visit</a>
+			<li><a href="<?php echo get_post_type_archive_link( 'visit' ); ?>" data-section="#section-visit" class="visit fancybox"><span><i data-icon="&#x23;"></i></span> Visit</a>
 			<li><a href="#" class="store"><span><i data-icon="&#x26;"></i></span> Store</a>
 		</ul>
 
@@ -62,10 +62,12 @@
 
 	<div id="section-visit" class="section-modal">
 		<ul id="sections">
-			<li><a href="#"><i class="icon-pin"></i> Tours</a></li>
-			<li><a href="#"><i class="icon-rocket"></i> Attractions</a></li>
-			<li><a href="#"><i class="icon-home"></i> Lodging</a></li>
-			<li><a href="#"><i class="icon-coffee"></i> Restaurants</a></li>
+			<li class="full"><a href="#"><i class="icon-attachment"></i> Build a Trip</a></li>
+			<li class="fake"></li>
+			<li><a href="<?php echo get_term_link( 'tours', 'visit-type' ); ?>"><i class="icon-pin"></i> Tours</a></li>
+			<li><a href="<?php echo get_term_link( 'attractions', 'visit-type' ); ?>"><i class="icon-rocket"></i> Attractions</a></li>
+			<li><a href="<?php echo get_term_link( 'lodging', 'visit-type' ); ?>"><i class="icon-home"></i> Lodging</a></li>
+			<li><a href="<?php echo get_term_link( 'restaurants', 'visit-type' ); ?>"><i class="icon-coffee"></i> Restaurants</a></li>
 		</ul>
 	</div>
 

@@ -8,14 +8,14 @@
 
 global $wp_query;
 
-//$taxonomies = get_taxonomies( array( 'object_type' => array( get_query_var( 'post_type' ) ) ) );
-
 $terms  = get_terms( 'site-type' );
 $output = array();
 
+$tax = get_queried_object();
+
 if ( ! empty( $terms ) ) :
 	foreach ( $terms as $term ) :
-		$output[] = sprintf( '<a href="%s">%s</a>', get_term_link( $term, 'site-type' ), $term->name );
+		$output[] = sprintf( '<li %s><a href="%s">%s</a></li>', ( is_tax() && $term->slug == $tax->slug ) ? ' class="active"' : '', get_term_link( $term, 'site-type' ), $term->name );
 	endforeach;
 endif;
 
@@ -27,8 +27,8 @@ get_header(); ?>
 			<h1 class="page-title"><span><?php echo is_post_type_archive() ? post_type_archive_title() : single_term_title(); ?></span></h1>
 			<?php if ( ! empty( $output ) ) : ?>
 			<ul class="page-sorting">
-				<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><?php _e( 'All', 'bhx' ); ?></a></li>
-				<li><?php echo implode( '</li><li>', $output ); ?></li>
+				<li <?php echo is_post_type_archive() ? ' class="active"' : ''; ?>><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><?php _e( 'All', 'bhx' ); ?></a></li>
+				<?php echo implode( '', $output ); ?>
 			</ul>
 			<?php endif; ?>
 		</div>
