@@ -1179,6 +1179,15 @@ p {
 .x-action:last-child {
   margin-right: 0;
 }
+#entry-content .storyjs-embed.sized-embed {
+  border: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
 /** Posts */
 #stuff-grid {
   margin: 0 60px 60px;

@@ -36,6 +36,15 @@ function bhx_setup() {
 	require( get_template_directory() . '/inc/theme-options/theme-options.php' );
 
 	/**
+	 * Custom Stuff
+	 */
+	if ( is_admin() ) {
+		require( get_template_directory() . '/inc/admin.php' );
+	}
+
+	require( get_template_directory() . '/inc/educate.php' );
+
+	/**
 	 * Add default posts and comments RSS feed links to head
 	 */
 	add_theme_support( 'automatic-feed-links' );
@@ -70,3 +79,35 @@ function bhx_scripts() {
 	wp_enqueue_script( 'bhx', get_template_directory_uri() . '/js/bhx.js' );
 }
 add_action( 'wp_enqueue_scripts', 'bhx_scripts' );
+
+/**
+ * Creates a nicely formatted and more specific title element text
+ * for output in head of document, based on current view.
+ *
+ * @since BHX 1.0
+ *
+ * @param string $title Default title text for current view.
+ * @param string $sep Optional separator.
+ * @return string Filtered title.
+ */
+function bhx_wp_title( $title, $sep ) {
+	global $paged, $page;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
+
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'bhx' ), max( $paged, $page ) );
+
+	return $title;
+}
+add_filter( 'wp_title', 'bhx_wp_title', 10, 2 );

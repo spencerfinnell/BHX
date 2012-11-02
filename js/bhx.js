@@ -9,17 +9,20 @@
       },
       fancybox: function() {
         if ($.fancybox) {
-          return $('.fancybox').fancybox({
-            minWidth: 445,
-            width: 445,
-            padding: 0,
-            helpers: {
-              overlay: {
-                css: {
-                  'background': 'rgba(245, 245, 245, .85)'
+          return $('.fancybox').click(function() {
+            return $('.fancybox').fancybox({
+              href: $(this).data('section'),
+              minWidth: 445,
+              width: 445,
+              padding: 0,
+              helpers: {
+                overlay: {
+                  css: {
+                    'background': 'rgba(245, 245, 245, .85)'
+                  }
                 }
               }
-            }
+            });
           });
         }
       }

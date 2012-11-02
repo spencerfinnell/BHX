@@ -42,8 +42,8 @@
 
 	<div id="hero">
 		<ul id="actions">
-			<li><a href="#section-educate" class="educate fancybox"><span><i data-icon="&#x28;"></i></span> Educate</a>
-			<li><a href="#" class="sites"><span><i data-icon="&#x27;"></i></span> Sites</a>
+			<li><a href="<?php echo get_post_type_archive_link( 'educational' ); ?>" data-section="#section-educate" class="educate fancybox"><span><i data-icon="&#x28;"></i></span> Educate</a>
+			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>" class="sites"><span><i data-icon="&#x27;"></i></span> Sites</a>
 			<li><a href="#section-visit" class="visit fancybox"><span><i data-icon="&#x23;"></i></span> Visit</a>
 			<li><a href="#" class="store"><span><i data-icon="&#x26;"></i></span> Store</a>
 		</ul>
@@ -53,10 +53,10 @@
 
 	<div id="section-educate" class="section-modal">
 		<ul id="sections">
-			<li><a href="#"><i class="icon-share"></i> Timeline</a></li>
-			<li><a href="#"><i class="icon-picture"></i> Historic Sites</a></li>
-			<li><a href="#"><i class="icon-newspaper"></i> Literature</a></li>
-			<li><a href="#"><i class="icon-mic"></i> Documentaries</a></li>
+			<li><a href="<?php echo get_permalink( get_page_by_title( 'Interactive Timeline' ) ); ?>"><i class="icon-share"></i> Timeline</a></li>
+			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><i class="icon-picture"></i> Historic Sites</a></li>
+			<li><a href="<?php echo get_term_link( 'literature', 'educational-resource-type' ); ?>"><i class="icon-newspaper"></i> Literature</a></li>
+			<li><a href="<?php echo get_term_link( 'documentary', 'educational-resource-type' ); ?>"><i class="icon-mic"></i> Documentaries</a></li>
 		</ul>
 	</div>
 
