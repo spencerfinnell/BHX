@@ -23,6 +23,37 @@ function bhx_theme_options_init() {
 		'bhx_options',
 		'bhx_theme_options_validate'
 	);
+
+	add_settings_section(
+		'pages',
+		__( 'Page Settings', 'bhx' ),
+		'__return_false',
+		'bhx_options'
+	);
+
+	add_settings_field(
+		'builder',
+		__( 'Trip Builder Page', 'bhx' ), 
+		'bhx_settings_field_pages',
+		'bhx_options',
+		'pages',
+		array(
+			'name'        => 'page_builder',
+			'value'       => bhx_get_theme_option( 'page_builder' )
+		)
+	);
+
+	add_settings_field(
+		'timeline',
+		__( 'Timeline Page', 'bhx' ), 
+		'bhx_settings_field_pages',
+		'bhx_options',
+		'pages',
+		array(
+			'name'        => 'page_timeline',
+			'value'       => bhx_get_theme_option( 'page_timeline' )
+		)
+	);
 	
 	add_settings_section(
 		'social',
@@ -100,8 +131,10 @@ function bhx_get_theme_options() {
 	$saved = (array) get_option( 'bhx_options' );
 	
 	$defaults = array(
-		'twitter'  => 'blackheritagex',
-		'facebook' => 'blackheritagexperience'
+		'page_timeline' => '',
+		'page_builder'  => '',
+		'twitter'       => 'blackheritagex',
+		'facebook'      => 'blackheritagexperience'
 	);
 
 	$defaults = apply_filters( 'bhx_default_theme_options', $defaults );
@@ -164,7 +197,7 @@ function bhx_theme_options_render_page() {
 function bhx_theme_options_validate( $input ) {
 	$output = array();
 	
-	
+	$output = $input;
 		
 	$output = wp_parse_args( $output, bhx_get_theme_options() );	
 		
@@ -336,6 +369,34 @@ function bhx_settings_field_select( $args = array() ) {
 			</option>
 			<?php endforeach; ?>
 		</select>
+		<?php echo $description; ?>
+	</label>
+<?php
+}
+
+/**
+ * Pages Select
+ *
+ * @since BHX 1.0
+ */
+function bhx_settings_field_pages( $args = array() ) {
+	$defaults = array(
+		'name'        => '',
+		'value'       => '',
+		'description' => ''
+	);
+	
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+	
+	$id   = esc_attr( $name );
+	$name = esc_attr( sprintf( 'bhx_options[%s]', $name ) );
+?>
+	<label for="<?php echo $id; ?>">
+		<?php wp_dropdown_pages( array(
+			'name' => $name,
+			'selected' => $value
+		) ); ?>
 		<?php echo $description; ?>
 	</label>
 <?php

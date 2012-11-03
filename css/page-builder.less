@@ -42,7 +42,7 @@
 	&:after {
 		content: ' ';
 		position: absolute;
-		right: 20px;
+		right: 25px;
 		top: -10%;
 		background: lighten(@grayLighter, 8%);
 
@@ -53,11 +53,19 @@
 		display: none;
 	}
 
-	.size(22%, auto);
 	.pull-left;
 
-	&#lodging {
-		width: 34%;
+	&#tours {
+		.size(18%, auto);
+	}
+
+	&#attractions {
+		.size(22%, auto);
+	}
+
+	&#lodging,
+	&#restaraunts {
+		width: 30%;
 	}
 
 	legend {
@@ -66,6 +74,9 @@
 			color: @purple;
 
 			cursor: pointer;
+			-webkit-user-select: none; 
+			-moz-user-select: none;
+			user-select: none; 
 
 			input[type="checkbox"] {
 				margin: 4px 5px 0 0 ;
@@ -129,11 +140,18 @@
 		padding-top: 15px;
 
 		.pull-left;
-		.size(150px, auto);
+		.size(190px, auto);
+
+		i {
+			font-size: 22px;
+			color: @grayLighter;
+
+			margin-right: 5px;
+		}
 	}
 
 	ul {
-		margin: 0 0 0 180px;
+		margin: 0 0 0 220px;
 		padding: 10px 0 10px 30px;
 		border-left: 1px solid lighten(@grayLighter, 8%);
 		list-style: none;
@@ -160,6 +178,10 @@
 				.size(10px, 1px);
 			}
 		}
+
+		a:hover {
+			color: @red;
+		}
 	}
 }
 
@@ -167,11 +189,42 @@
 	margin: 0;
 
 	a {
-		color: @grayDark;
+		color: @gray;
 		text-decoration: none;
 	}
 }
 
 .suggestion-meta {
 	margin: 0;
+}
+
+.suggestion-types {
+	color: @grayLight;
+
+	margin: 5px 0 0;
+
+	.stars {
+		margin-right: 5px;
+
+		&:after {
+			#font > .sans-serif(12px, normal, normal);
+			color: @grayLighter;
+			content: '—';
+		}
+	}
+
+	.price {
+		#font > .sans-serif(16px, bold, normal);
+		color: #5d9e1d;
+
+		vertical-align: middle;
+	}
+
+	.icon-star {
+		font-size: 16px;
+		color: #dea52b;
+
+		vertical-align: middle;
+		margin-right: 3px;
+	}
 }

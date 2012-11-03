@@ -327,6 +327,18 @@ textarea {
 .icon-attachment:before {
   content: "\36";
 }
+.icon-money-bag:before {
+  content: "\37";
+}
+.icon-cake:before {
+  content: "\38";
+}
+.icon-graduate:before {
+  content: "\39";
+}
+.icon-library:before {
+  content: "\3a";
+}
 /** Components */
 html {
   -webkit-font-smoothing: antialiased;
@@ -1270,14 +1282,12 @@ article.hentry.timeline {
   padding: 0;
   border: 0;
   position: relative;
-  width: 22%;
-  height: auto;
   float: left;
 }
 .build-criteria:after {
   content: ' ';
   position: absolute;
-  right: 20px;
+  right: 25px;
   top: -10%;
   background: #ebebeb;
   width: 1px;
@@ -1286,8 +1296,17 @@ article.hentry.timeline {
 .build-criteria:last-child:after {
   display: none;
 }
-.build-criteria#lodging {
-  width: 34%;
+.build-criteria#tours {
+  width: 18%;
+  height: auto;
+}
+.build-criteria#attractions {
+  width: 22%;
+  height: auto;
+}
+.build-criteria#lodging,
+.build-criteria#restaraunts {
+  width: 30%;
 }
 .build-criteria legend label {
   font-family: 'Patua One', 'Glegoo', Georgia, "Times New Roman", Times, serif;
@@ -1296,6 +1315,9 @@ article.hentry.timeline {
   line-height: normal;
   color: #77507d;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .build-criteria legend label input[type="checkbox"] {
   margin: 4px 5px 0 0 ;
@@ -1359,11 +1381,16 @@ article.hentry.timeline {
   margin-top: 0;
   padding-top: 15px;
   float: left;
-  width: 150px;
+  width: 190px;
   height: auto;
 }
+.visit-suggestions h2 i {
+  font-size: 22px;
+  color: #d7d7d7;
+  margin-right: 5px;
+}
 .visit-suggestions ul {
-  margin: 0 0 0 180px;
+  margin: 0 0 0 220px;
   padding: 10px 0 10px 30px;
   border-left: 1px solid #ebebeb;
   list-style: none;
@@ -1387,15 +1414,47 @@ article.hentry.timeline {
   width: 10px;
   height: 1px;
 }
+.visit-suggestions ul a:hover {
+  color: #af0000;
+}
 .suggestion-title {
   margin: 0;
 }
 .suggestion-title a {
-  color: #262626;
+  color: #3f3f3f;
   text-decoration: none;
 }
 .suggestion-meta {
   margin: 0;
+}
+.suggestion-types {
+  color: #7d7d7d;
+  margin: 5px 0 0;
+}
+.suggestion-types .stars {
+  margin-right: 5px;
+}
+.suggestion-types .stars:after {
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+  color: #d7d7d7;
+  content: '—';
+}
+.suggestion-types .price {
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: normal;
+  color: #5d9e1d;
+  vertical-align: middle;
+}
+.suggestion-types .icon-star {
+  font-size: 16px;
+  color: #dea52b;
+  vertical-align: middle;
+  margin-right: 3px;
 }
 /** Posts */
 #stuff-grid {

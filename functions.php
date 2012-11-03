@@ -33,7 +33,7 @@ function bhx_setup() {
 	/**
 	 * Custom Theme Options
 	 */
-	require( get_template_directory() . '/inc/theme-options/theme-options.php' );
+	require( get_template_directory() . '/inc/theme-options.php' );
 
 	/**
 	 * Custom Stuff
@@ -45,6 +45,7 @@ function bhx_setup() {
 	require( get_template_directory() . '/inc/educate.php' );
 	require( get_template_directory() . '/inc/visit.php' );
 	require( get_template_directory() . '/inc/timeline.php' );
+	require( get_template_directory() . '/inc/builder.php' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head

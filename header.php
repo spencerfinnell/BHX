@@ -42,33 +42,13 @@
 
 	<div id="hero">
 		<ul id="actions">
-			<li><a href="<?php echo get_post_type_archive_link( 'educational' ); ?>" data-section="#section-educate" class="educate fancybox"><span><i data-icon="&#x28;"></i></span> Educate</a>
+			<li><a href="<?php echo get_post_type_archive_link( 'educational' ); ?>" data-section="#section-educate" class="educate fancybox"><span><i class="icon-graduate"></i></span> Educate</a>
 			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>" class="sites"><span><i data-icon="&#x27;"></i></span> Sites</a>
 			<li><a href="<?php echo get_post_type_archive_link( 'visit' ); ?>" data-section="#section-visit" class="visit fancybox"><span><i data-icon="&#x23;"></i></span> Visit</a>
 			<li><a href="#" class="store"><span><i data-icon="&#x26;"></i></span> Store</a>
 		</ul>
 
 		<img src="<?php echo get_template_directory_uri(); ?>/images/hero.jpg" alt="" />
-	</div>
-
-	<div id="section-educate" class="section-modal">
-		<ul id="sections">
-			<li><a href="<?php echo get_permalink( get_page_by_title( 'Interactive Timeline' ) ); ?>"><i class="icon-share"></i> Timeline</a></li>
-			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><i class="icon-picture"></i> Historic Sites</a></li>
-			<li><a href="<?php echo get_term_link( 'literature', 'educational-resource-type' ); ?>"><i class="icon-newspaper"></i> Literature</a></li>
-			<li><a href="<?php echo get_term_link( 'documentary', 'educational-resource-type' ); ?>"><i class="icon-mic"></i> Documentaries</a></li>
-		</ul>
-	</div>
-
-	<div id="section-visit" class="section-modal">
-		<ul id="sections">
-			<li class="full"><a href="#"><i class="icon-attachment"></i> Build a Trip</a></li>
-			<li class="fake"></li>
-			<li><a href="<?php echo get_term_link( 'tours', 'visit-type' ); ?>"><i class="icon-pin"></i> Tours</a></li>
-			<li><a href="<?php echo get_term_link( 'attractions', 'visit-type' ); ?>"><i class="icon-rocket"></i> Attractions</a></li>
-			<li><a href="<?php echo get_term_link( 'lodging', 'visit-type' ); ?>"><i class="icon-home"></i> Lodging</a></li>
-			<li><a href="<?php echo get_term_link( 'restaurants', 'visit-type' ); ?>"><i class="icon-coffee"></i> Restaurants</a></li>
-		</ul>
 	</div>
 
 	<div id="wrapper" class="container">

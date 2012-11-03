@@ -37,7 +37,7 @@ function bhx_post_type_educational_sites() {
 			'with_front' => false
 		),
 		'capability_type'     => 'post',
-		'has_archive'         => 'sites', 
+		'has_archive'         => 'educate/sites', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
 		'supports'            => array( 'title', 'editor', 'thumbnail' ),
