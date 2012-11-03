@@ -1,0 +1,177 @@
+#build-criteria {
+	.columns {
+		margin: 0 -60px;
+		padding: 0 60px;
+		border-bottom: 1px solid lighten(@grayLighter, 8%);
+	}
+
+	.filter {
+		margin: 0 -60px;
+		padding: 20px 60px;
+
+		border-bottom: 1px solid lighten(@grayLighter, 8%);
+
+		.clearfix;
+	}
+
+	.note {
+		#font > .shorthand(11px, normal, 17px);
+		color: @grayLight;
+
+		.size(70%, auto);
+		.pull-left;
+	}
+
+	input[type="submit"] {
+		.pull-right;
+	}
+
+	.clearfix;
+}
+
+#build-criteria form {
+	margin: 40px 60px 0;
+}
+
+.build-criteria {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	position: relative;
+	
+	&:after {
+		content: ' ';
+		position: absolute;
+		right: 20px;
+		top: -10%;
+		background: lighten(@grayLighter, 8%);
+
+		.size(1px, 110%);
+	}
+
+	&:last-child:after {
+		display: none;
+	}
+
+	.size(22%, auto);
+	.pull-left;
+
+	&#lodging {
+		width: 34%;
+	}
+
+	legend {
+		label {
+			#font > .serif-alt(20px, normal, normal);
+			color: @purple;
+
+			cursor: pointer;
+
+			input[type="checkbox"] {
+				margin: 4px 5px 0 0 ;
+			}
+		}
+
+		&.disabled label {
+			color: lighten(@purple, 20%);
+		}
+	}
+
+	label,
+	input[type="checkbox"] {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	ul {
+		.reset-list;
+
+		margin: 12px 10px 15px 24px;
+
+		.pull-left;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		li {
+			margin: 0 0 5px;
+
+			label {
+				#font > .sans-serif(15px, normal, normal);
+				color: @grayLight;
+
+				input[type="checkbox"] {
+					margin: 2px 5px 0 0 ;
+				}
+			}
+
+			&.disabled {
+				opacity:.5;
+			}
+		}
+	}
+}
+
+#builder-results {
+	margin: 40px 60px;
+}
+
+.visit-suggestions {
+	margin-bottom: 40px;
+
+	h2 {
+		#font > .serif-alt(28px, normal, normal);
+		color: @purple;
+		text-align: right;
+
+		margin-top: 0;
+		padding-top: 15px;
+
+		.pull-left;
+		.size(150px, auto);
+	}
+
+	ul {
+		margin: 0 0 0 180px;
+		padding: 10px 0 10px 30px;
+		border-left: 1px solid lighten(@grayLighter, 8%);
+		list-style: none;
+
+		li {
+			margin-bottom: 20px;
+			position: relative;
+
+			&:last-child {
+				margin-bottom: 0;
+
+				&:before {
+					display: none;
+				}
+			}
+
+			&:before {
+				content: ' ';
+				position: absolute;
+				left: -30px;
+				bottom: -9px;
+				background: lighten(@grayLighter, 8%);
+
+				.size(10px, 1px);
+			}
+		}
+	}
+}
+
+.suggestion-title {
+	margin: 0;
+
+	a {
+		color: @grayDark;
+		text-decoration: none;
+	}
+}
+
+.suggestion-meta {
+	margin: 0;
+}

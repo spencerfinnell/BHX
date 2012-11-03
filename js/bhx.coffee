@@ -22,4 +22,28 @@ jQuery ($) ->
 						}
 					)
 
-	app.init();
+	tripbuilder = 
+
+		init : () ->
+			this.filter();
+
+		filter : () ->
+			$( '.build-criteria' ).each () ->
+				legend = $(@).find 'legend'
+				main   = legend.find 'input[type="checkbox"]'
+				items  = $(@).find 'li'
+
+				if ! main.is ':checked'
+					legend.addClass 'disabled'
+					items.addClass 'disabled'
+					items.find( 'input[type="checkbox"]' ).attr( 'disabled', 'disabled' )
+
+				main.change () ->
+					items.toggleClass 'disabled'
+					legend.toggleClass 'disabled'
+
+					items.find( 'input[type="checkbox"]' ).each () ->
+						if $(@).attr( 'disabled' ) then removeAttr( 'disabled' ) else $(@).attr( 'disabled', 'disabled' )
+
+	app.init()
+	tripbuilder.init()

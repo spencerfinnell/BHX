@@ -1214,6 +1214,183 @@ p {
   -moz-border-radius: 0;
   border-radius: 0;
 }
+#build-criteria {
+  *zoom: 1;
+}
+#build-criteria .columns {
+  margin: 0 -60px;
+  padding: 0 60px;
+  border-bottom: 1px solid #ebebeb;
+}
+#build-criteria .filter {
+  margin: 0 -60px;
+  padding: 20px 60px;
+  border-bottom: 1px solid #ebebeb;
+  *zoom: 1;
+}
+#build-criteria .filter:before,
+#build-criteria .filter:after {
+  display: table;
+  content: "";
+}
+#build-criteria .filter:after {
+  clear: both;
+}
+#build-criteria .note {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 17px;
+  color: #7d7d7d;
+  width: 70%;
+  height: auto;
+  float: left;
+}
+#build-criteria input[type="submit"] {
+  float: right;
+}
+#build-criteria:before,
+#build-criteria:after {
+  display: table;
+  content: "";
+}
+#build-criteria:after {
+  clear: both;
+}
+#build-criteria form {
+  margin: 40px 60px 0;
+}
+.build-criteria {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+  width: 22%;
+  height: auto;
+  float: left;
+}
+.build-criteria:after {
+  content: ' ';
+  position: absolute;
+  right: 20px;
+  top: -10%;
+  background: #ebebeb;
+  width: 1px;
+  height: 110%;
+}
+.build-criteria:last-child:after {
+  display: none;
+}
+.build-criteria#lodging {
+  width: 34%;
+}
+.build-criteria legend label {
+  font-family: 'Patua One', 'Glegoo', Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: normal;
+  color: #77507d;
+  cursor: pointer;
+}
+.build-criteria legend label input[type="checkbox"] {
+  margin: 4px 5px 0 0 ;
+}
+.build-criteria legend.disabled label {
+  color: #aa83b0;
+}
+.build-criteria label,
+.build-criteria input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: top;
+}
+.build-criteria ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  *zoom: 1;
+  margin: 12px 10px 15px 24px;
+  float: left;
+}
+.build-criteria ul:before,
+.build-criteria ul:after {
+  display: table;
+  content: "";
+}
+.build-criteria ul:after {
+  clear: both;
+}
+.build-criteria ul:last-child {
+  margin-right: 0;
+}
+.build-criteria ul li {
+  margin: 0 0 5px;
+}
+.build-criteria ul li label {
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+  color: #7d7d7d;
+}
+.build-criteria ul li label input[type="checkbox"] {
+  margin: 2px 5px 0 0 ;
+}
+.build-criteria ul li.disabled {
+  opacity: .5;
+}
+#builder-results {
+  margin: 40px 60px;
+}
+.visit-suggestions {
+  margin-bottom: 40px;
+}
+.visit-suggestions h2 {
+  font-family: 'Patua One', 'Glegoo', Georgia, "Times New Roman", Times, serif;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: normal;
+  color: #77507d;
+  text-align: right;
+  margin-top: 0;
+  padding-top: 15px;
+  float: left;
+  width: 150px;
+  height: auto;
+}
+.visit-suggestions ul {
+  margin: 0 0 0 180px;
+  padding: 10px 0 10px 30px;
+  border-left: 1px solid #ebebeb;
+  list-style: none;
+}
+.visit-suggestions ul li {
+  margin-bottom: 20px;
+  position: relative;
+}
+.visit-suggestions ul li:last-child {
+  margin-bottom: 0;
+}
+.visit-suggestions ul li:last-child:before {
+  display: none;
+}
+.visit-suggestions ul li:before {
+  content: ' ';
+  position: absolute;
+  left: -30px;
+  bottom: -9px;
+  background: #ebebeb;
+  width: 10px;
+  height: 1px;
+}
+.suggestion-title {
+  margin: 0;
+}
+.suggestion-title a {
+  color: #262626;
+  text-decoration: none;
+}
+.suggestion-meta {
+  margin: 0;
+}
 /** Posts */
 #stuff-grid {
   margin: 0 60px 60px;
