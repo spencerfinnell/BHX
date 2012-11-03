@@ -64,22 +64,28 @@ function bhx_builder() {
 			'tax_query' => array(
 				'relation' => 'AND',
 				array(
-					'taxonomy' => 'visit-price',
-					'field'    => 'slug',
-					'terms'    => $restaraunts[ 'prices' ]
-				),
-				array(
-					'taxonomy' => 'visit-stars',
-					'field'    => 'slug',
-					'terms'    => $restaraunts[ 'stars' ]
-				),
-				array(
 					'taxonomy' => 'visit-type',
 					'field'    => 'slug',
 					'terms'    => array( 'restaraunts' )
 				),
 			)
 		);
+
+		if ( ! empty( $restaraunts[ 'prices' ] ) ) {
+			$restaraunt_args[ 'tax_query' ][] = array(
+				'taxonomy' => 'visit-price',
+				'field'    => 'slug',
+				'terms'    => $restaraunts[ 'prices' ]
+			);
+		}
+
+		if ( ! empty( $restaraunts[ 'stars' ] ) ) {
+			$restaraunt_args[ 'tax_query' ][] = array(
+				'taxonomy' => 'visit-stars',
+				'field'    => 'slug',
+				'terms'    => $restaraunts[ 'stars' ]
+			);
+		}
 
 		$restaraunts = get_posts( array_merge( $restaraunt_args, $args ) );
 	}
@@ -89,22 +95,28 @@ function bhx_builder() {
 			'tax_query' => array(
 				'relation' => 'AND',
 				array(
-					'taxonomy' => 'visit-price',
-					'field'    => 'slug',
-					'terms'    => $lodging[ 'prices' ]
-				),
-				array(
-					'taxonomy' => 'visit-stars',
-					'field'    => 'slug',
-					'terms'    => $lodging[ 'stars' ]
-				),
-				array(
 					'taxonomy' => 'visit-type',
 					'field'    => 'slug',
 					'terms'    => array( 'lodging' )
 				),
 			)
 		);
+
+		if ( ! empty( $lodging[ 'prices' ] ) ) {
+			$lodging_args[ 'tax_query' ][] = array(
+				'taxonomy' => 'visit-price',
+				'field'    => 'slug',
+				'terms'    => $lodging[ 'prices' ]
+			);
+		}
+
+		if ( ! empty( $lodging[ 'stars' ] ) ) {
+			$lodging_args[ 'tax_query' ][] = array(
+				'taxonomy' => 'visit-stars',
+				'field'    => 'slug',
+				'terms'    => $lodging[ 'stars' ]
+			);
+		}
 
 		$lodging = get_posts( array_merge( $lodging_args, $args ) );
 	}
