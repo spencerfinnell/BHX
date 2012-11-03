@@ -978,6 +978,29 @@ p {
   font-size: 14px;
   color: #3f3f3f;
 }
+blockquote {
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  color: #dea52b;
+  margin: 0;
+  padding: 14px 20px 13px;
+  background: #fef8e0;
+  border: 1px solid #faefc3;
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 #hero {
   background: #181512;
   position: relative;
@@ -1432,15 +1455,16 @@ article.hentry.timeline {
   margin: 5px 0 0;
 }
 .suggestion-types .stars {
-  margin-right: 5px;
+  margin-left: 8px;
 }
-.suggestion-types .stars:after {
+.suggestion-types .stars:before {
   font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   line-height: normal;
   color: #d7d7d7;
   content: '—';
+  margin-right: 8px;
 }
 .suggestion-types .price {
   font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;

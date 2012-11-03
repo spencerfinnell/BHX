@@ -122,7 +122,22 @@ function bhx_builder() {
 }
 add_action( 'template_redirect', 'bhx_builder' );
 
-function bhx_builder_suggestion_meta( $result_id ) {
+function bhx_builder_suggestion_meta( $result_id, $section ) {
+	$prices = wp_get_object_terms( $result_id, 'visit-price' );
+		
+	if ( $prices ) {
+		$pricez = array();
+
+		foreach ( $prices as $price ) {
+			$pricez[] = '<span class="price">' . $price->name . '</span>';
+		}
+
+		echo implode( ', ', $pricez );
+	}
+
+	if ( ! in_array( $section, array( 'restaraunt', 'lodging' ) ) )
+		return;
+
 	$stars = wp_get_object_terms( $result_id, 'visit-stars' );
 
 	if ( $stars ) {
@@ -137,17 +152,5 @@ function bhx_builder_suggestion_meta( $result_id ) {
 		for ( $i = 0; $i < $count; $i++ )
 			echo '<i class="icon-star"></i>';
 		echo '</span>';
-	}
-
-	$prices = wp_get_object_terms( $result_id, 'visit-price' );
-		
-	if ( $prices ) {
-		$pricez = array();
-
-		foreach ( $prices as $price ) {
-			$pricez[] = '<span class="price">' . $price->name . '</span>';
-		}
-
-		echo implode( ', ', $pricez );
 	}
 }

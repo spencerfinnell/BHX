@@ -10,6 +10,9 @@
 
 global $results;
 
+$sections = array( 'tours', 'attractions', 'restaraunts', 'lodging' );
+$defaults = array( 'tours', 'lodging' );
+
 $prices = get_terms( 'visit-price', array( 'hide_empty' => false ) );
 $stars  = get_terms( 'visit-stars', array( 'hide_empty' => false ) );
 
@@ -19,53 +22,36 @@ get_header();
 	<div id="build-criteria">
 		<form action="" method="post">
 			<div class="columns clearfix">
-				<fieldset id="tours" class="build-criteria">
-					<legend><label for="include-tours" class="section"><input type="checkbox" value="tours" id="include-tours" checked="checked" /> Tours</label></legend>
+				<?php foreach ( $sections as $section ) : ?>
+
+				<fieldset id="<?php echo $section; ?>" class="build-criteria">
+					<legend>
+						<label for="include-<?php echo $section; ?>" class="section">
+							<input type="checkbox" name="include-<?php echo $section; ?>" value="<?php echo $section; ?>" id="include-<?php echo $section; ?>" <?php echo ( ! $results ) ? checked(1, in_array( $section, $defaults ), false) : checked( $section, $_POST[ 'include-' . $section ], false ); ?> /> <?php echo ucfirst( $section ); ?>
+						</label>
+					</legend>
+					
 					<ul>
-						<?php foreach ( $prices as $price ) : ?>
-						<li><label for="tour-<?php echo $price->slug; ?>"><input type="checkbox" name="tours[prices][<?php echo $price->slug; ?>]" id="tour-<?php echo $price->slug; ?>" value="<?php echo $price->slug; ?>" <?php checked(0, 0); ?> /> <?php echo $price->name; ?></label></li>
-						<?php endforeach; ?>
+						<?php if ( $prices ) : foreach ( $prices as $price ) : ?>
+							<li>
+								<label for="<?php echo $section; ?>-<?php echo $price->slug; ?>">
+									<input type="checkbox" name="<?php echo $section; ?>[prices][<?php echo $price->slug; ?>]" id="<?php echo $section; ?>-<?php echo $price->slug; ?>" value="<?php echo $price->slug; ?>" <?php echo ( ! $results ) ? checked( 1, in_array( $section, $defaults ), false ) : checked( $price->slug, $_POST[ $section ][ 'prices' ][ $price->slug ], false ); ?> /> <?php echo $price->name; ?>
+								</label>
+							</li>
+						<?php endforeach; endif; ?>
 					</ul>
+
+					<?php if ( in_array( $section, array( 'restaraunts', 'lodging' ) ) ) : ?>
+					<ul>
+						<?php if ( $stars ) : foreach ( $stars as $star ) : ?>
+						<li><label for="<?php echo $section; ?>-<?php echo $star->slug; ?>"><input type="checkbox" name="<?php echo $section; ?>[stars][<?php echo $star->slug; ?>]" id="<?php echo $section; ?>-<?php echo $star->slug; ?>" value="<?php echo $star->slug; ?>" <?php echo ( ! $results ) ? checked( 1, in_array( $section, $defaults ), false ) : checked( $star->slug, $_POST[ $section ][ 'stars' ][ $star->slug ], false ); ?> /> <?php echo $star->name; ?></label></li>
+						<?php endforeach; endif; ?>
+					</ul>
+					<?php endif; ?>
+
 				</fieldset>
 
-				<fieldset id="attractions" class="build-criteria">
-					<legend><label for="include-attractions" class="section"><input type="checkbox" id="include-attractions" /> Attractions</label></legend>
-					<ul>
-						<?php foreach ( $prices as $price ) : ?>
-						<li><label for="attraction-<?php echo $price->slug; ?>"><input type="checkbox" name="attractions[prices][<?php echo $price->slug; ?>]" id="attraction-<?php echo $price->slug; ?>" value="<?php echo $price->slug; ?>" <?php checked(1, 0); ?> /> <?php echo $price->name; ?></label></li>
-						<?php endforeach; ?>
-					</ul>
-				</fieldset>
-
-				<fieldset id="restaraunts" class="build-criteria">
-					<legend><label for="include-restaraunts" class="section"><input type="checkbox" id="include-restaraunts" /> Restaurants</label></legend>
-					<ul>
-						<?php foreach ( $prices as $price ) : ?>
-						<li><label for="restaurant-<?php echo $price->slug; ?>"><input type="checkbox" name="restaraunts[<?php echo $price->slug; ?>]" id="restaurant-<?php echo $price->slug; ?>" value="<?php echo $price->slug; ?>" <?php checked(1, 0); ?> /> <?php echo $price->name; ?></label></li>
-						<?php endforeach; ?>
-					</ul>
-
-					<ul>
-						<?php foreach ( $stars as $star ) : ?>
-						<li><label for="restaurant-<?php echo $star->slug; ?>"><input type="checkbox" name="restaurants[stars][<?php echo $star->slug; ?>]" id="restaurant-<?php echo $star->slug; ?>" value="<?php echo $star->slug; ?>" <?php checked(1, 0); ?> /> <?php echo $star->name; ?></label></li>
-						<?php endforeach; ?>
-					</ul>
-				</fieldset>
-
-				<fieldset id="lodging" class="build-criteria">
-					<legend><label for="include-lodging" class="section"><input type="checkbox" id="include-lodging" checked="checked" /> Lodging</label></legend>
-					<ul>
-						<?php foreach ( $prices as $price ) : ?>
-						<li><label for="lodging-<?php echo $price->slug; ?>"><input type="checkbox" name="lodging[prices][<?php echo $price->slug; ?>]" id="lodging-<?php echo $price->slug; ?>" value="<?php echo $price->slug; ?>" <?php checked(0, 0); ?> /> <?php echo $price->name; ?></label></li>
-						<?php endforeach; ?>
-					</ul>
-
-					<ul>
-						<?php foreach ( $stars as $star ) : ?>
-						<li><label for="lodging-<?php echo $star->slug; ?>"><input type="checkbox" name="lodging[stars][<?php echo $star->slug; ?>]" id="lodging-<?php echo $star->slug; ?>" value="<?php echo $star->slug; ?>" <?php checked(0, 0); ?> /> <?php echo $star->name; ?></label></li>
-						<?php endforeach; ?>
-					</ul>
-				</fieldset>
+				<?php endforeach; ?>
 			</div>
 
 			<p class="filter">
@@ -83,71 +69,37 @@ get_header();
 
 	<div id="builder-results">
 
-		<?php if ( isset ( $results ) ) : ?>
+		<?php
+			if ( isset ( $results ) ) :
+				foreach ( $sections as $section ) :
+					if ( ! $_POST[ $section ] )
+						continue; 
+		?>
 
-			<?php if ( $results[ 'tours' ] ) : ?>
-			<section id="tours" class="visit-suggestions">
-				<h2><i class="icon-pin"></i> <?php _e( 'Tours', 'bhx' ); ?></h2>
+				<section id="tours" class="visit-suggestions">
+					<h2><i class="icon-pin"></i> <?php echo ucfirst( $section ); ?></h2>
 
-				<ul>
-					<?php foreach ( $results[ 'tours' ] as $result ) : ?>
-					<li>
-						<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
-						<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
-						<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID ); ?></p>
-					</li>
-					<?php endforeach; ?>
-				</uL>
-			</section>
-			<?php endif; ?>
+					<ul>
+						<?php if ( $results[ $section ] ) : foreach ( $results[ $section ] as $result ) : ?>
+						<li>
+							<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
+							<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
+							<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID, $section ); ?></p>
+						</li>
+						<?php endforeach; else : ?>
+						<li>
+							<h3 class="suggestion-title">Sorry, we don't have anything.</h3>
+							<p class="suggestion-meta">Unfortunently we don't have any <?php echo $section; ?>s matching your search.</p>
+						</li>
+						<?php endif; ?>
+					</uL>
+				</section>
+		<?php
+				endforeach;
+			else :
+		?>
 
-			<?php if ( $results[ 'attractions' ] ) : ?>
-			<section id="attractions" class="visit-suggestions">
-				<h2><i class="icon-rocket"></i> <?php _e( 'Attractions', 'bhx' ); ?></h2>
-
-				<ul>
-					<?php foreach ( $results[ 'attractions' ] as $result ) : ?>
-					<li>
-						<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
-						<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
-						<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID ); ?></p>
-					</li>
-					<?php endforeach; ?>
-				</uL>
-			</section>
-			<?php endif; ?>
-
-			<?php if ( $results[ 'restaraunts' ] ) : ?>
-			<section id="attractions" class="visit-suggestions">
-				<h2><i class="icon-coffee"></i> <?php _e( 'Restaraunts', 'bhx' ); ?></h2>
-
-				<ul>
-					<?php foreach ( $results[ 'restaraunts' ] as $result ) : ?>
-					<li>
-						<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
-						<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
-						<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID ); ?></p>
-					</li>
-					<?php endforeach; ?>
-				</uL>
-			</section>
-			<?php endif; ?>
-
-			<?php if ( $results[ 'lodging' ] ) : ?>
-			<section id="attractions" class="visit-suggestions">
-				<h2><i class="icon-coffee"></i> <?php _e( 'Lodging', 'bhx' ); ?></h2>
-
-				<ul>
-					<?php foreach ( $results[ 'lodging' ] as $result ) : ?>
-					<li>
-						<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
-						<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
-						<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID ); ?></p>
-					</li>
-					<?php endforeach; ?>
-				</uL>
-			</section>
-			<?php endif; ?>
+			<blockquote>Use the filtering tools above to find great places to see in St. Augustine.</blockquote>
 
 		<?php endif; ?>
 
