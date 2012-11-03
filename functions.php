@@ -44,6 +44,7 @@ function bhx_setup() {
 
 	require( get_template_directory() . '/inc/educate.php' );
 	require( get_template_directory() . '/inc/visit.php' );
+	require( get_template_directory() . '/inc/timeline.php' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head

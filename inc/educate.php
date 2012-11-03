@@ -145,28 +145,6 @@ function bhx_post_type_educational_resources() {
 }
 add_action( 'init', 'bhx_post_type_educational_resources' );
 
-function bhx_timeline_rewrite() {
-	add_rewrite_rule( 'timeline.json', 'index.php?bhx-timeline-json=true', 'top' );
-}
-add_action( 'init', 'bhx_timeline_rewrite' );
-
-function bhx_timeline_query_vars( $query_vars ) {
-    $query_vars[] = 'bhx-timeline-json';
-
-    return $query_vars;
-}
-add_filter( 'query_vars', 'bhx_timeline_query_vars' );
-
-function bhx_timeline_json( $wp ) {
-	if ( ! get_query_var( 'bhx-timeline-json' ) )
-		return;
-
-	echo'wat';
-
-	die();
-}
-add_action( 'template_redirect', 'bhx_timeline_json' );
-
 function bhx_sites_archive() {
 	global $wp_query;
 

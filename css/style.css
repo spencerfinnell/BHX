@@ -1214,6 +1214,12 @@ p {
   -moz-border-radius: 0;
   border-radius: 0;
 }
+#storyjs .content {
+  margin-top: 0;
+}
+article.hentry.timeline {
+  padding-top: 0;
+}
 #build-criteria {
   *zoom: 1;
 }
