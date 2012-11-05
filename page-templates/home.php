@@ -69,7 +69,7 @@ get_header();
 	</ul><!-- #xstuff -->
 
 	<div id="young" class="container">
-
+		Andrew Young
 	</div><!-- #young -->
 
 <?php get_footer(); ?>
