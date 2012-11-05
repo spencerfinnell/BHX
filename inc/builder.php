@@ -166,3 +166,21 @@ function bhx_builder_suggestion_meta( $result_id, $section ) {
 		echo '</span>';
 	}
 }
+
+function bhx_builder_section_icon( $section ) {
+	switch ( $section ) {
+		case 'tours' :
+			$icon = 'pin';
+			break;
+		case 'attractions' :
+			$icon = 'rocket';
+			break;
+		case 'restaraunts' :
+			$icon = 'cake';
+			break;
+		default :
+			$icon = 'home';
+	}
+
+	echo $icon;
+}

@@ -72,17 +72,17 @@ get_header();
 		<?php
 			if ( isset ( $results ) ) :
 				foreach ( $sections as $section ) :
-					if ( ! $_POST[ $section ] )
+					if ( ! $_POST[ $section ] && ! $_POST[ 'include-' . $section ] )
 						continue; 
 		?>
 
 				<section id="tours" class="visit-suggestions">
-					<h2><i class="icon-pin"></i> <?php echo ucfirst( $section ); ?></h2>
+					<h2><i class="icon-<?php bhx_builder_section_icon( $section ); ?>"></i> <?php echo ucfirst( $section ); ?></h2>
 
 					<ul>
 						<?php if ( $results[ $section ] ) : foreach ( $results[ $section ] as $result ) : ?>
 						<li>
-							<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?></a></h3>
+							<h3 class="suggestion-title"><a href="<?php echo get_permalink( $result->ID ); ?>"><?php echo get_the_title( $result->ID ); ?> &rarr;</a></h3>
 							<p class="suggestion-meta"><?php echo wp_trim_words( $result->post_content, 10 ); ?></p>
 							<p class="suggestion-types"><?php bhx_builder_suggestion_meta( $result->ID, $section ); ?></p>
 						</li>

@@ -82,7 +82,7 @@ add_action( 'init', 'bhx_post_type_educational_sites' );
  */
 function bhx_post_type_educational_resources() {
 	$labels = array(
-		'name'               => __( 'Educational', 'bhx' ),
+		'name'               => __( 'Educational Resources', 'bhx' ),
 		'singular_name'      => __( 'Educational Resource', 'bhx' ),
 		'add_new'            => __( 'Add New', 'bhx' ),
 		'add_new_item'       => __( 'Add New Resource', 'bhx' ),

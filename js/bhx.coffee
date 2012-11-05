@@ -45,6 +45,6 @@ jQuery ($) ->
 					items.find( 'input[type="checkbox"]' ).each () ->
 						if $(@).prop( 'disabled', true ) then $(@).prop( 'disabled', false ) else $(@).prop( 'disabled', true )
 						if $(@).prop( 'checked', true ) then $(@).prop( 'checked', false ) else $(@).prop( 'checked', true )
-
+						
 	app.init()
 	tripbuilder.init()

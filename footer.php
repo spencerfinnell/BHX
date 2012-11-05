@@ -36,7 +36,7 @@
 
 <div id="section-visit" class="section-modal">
 	<ul id="sections">
-		<li class="full"><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_builder' ) ) ); ?>"><i class="icon-attachment"></i> <?php _e( 'Build a Trip', 'bhx' ); ?></a></li>
+		<li class="full"><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_builder' ) ) ); ?>"><i class="icon-attachment"></i> <?php _e( 'Trip Planner', 'bhx' ); ?></a></li>
 		<li class="fake"></li>
 		<li><a href="<?php echo get_term_link( 'tours', 'visit-type' ); ?>"><i class="icon-pin"></i> <?php _e( 'Tours', 'bhx' ); ?></a></li>
 		<li><a href="<?php echo get_term_link( 'attractions', 'visit-type' ); ?>"><i class="icon-rocket"></i> <?php _e( 'Attractions', 'bhx' ); ?></a></li>

@@ -30,7 +30,7 @@ function bhx_post_type_visit() {
 			'with_front' => false
 		),
 		'capability_type'     => 'post',
-		'has_archive'         => 'visit', 
+		'has_archive'         => 'travel', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
 		'supports'            => array( 'title', 'editor', 'thumbnail' ),
@@ -121,7 +121,7 @@ add_action( 'init', 'bhx_post_type_visit' );
 
 function bhx_visit_template() {
 	global $wp_query;
-
+	
 	if ( get_query_var( 'post_type' ) != 'visit' )
 		return;
 

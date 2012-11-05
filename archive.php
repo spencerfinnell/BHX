@@ -41,7 +41,7 @@ get_header(); ?>
 
 			<?php if ( $is_visit_tax ) : ?>
 			<ul class="page-sorting">
-				<li><a href="#"><?php _e( 'Let us help you plan your trip.', 'bhx' ); ?></a></li>
+				<li><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_builder' ) ) ); ?>"><?php _e( 'Let us help you plan your trip.', 'bhx' ); ?></a></li>
 			</ul>
 			<?php endif; ?>
 		</div><!-- .page-header -->
