@@ -48,7 +48,7 @@ get_header();
 		</div>
 	</div><!-- #featured-slider -->
 
-	<ul id="xstuff" class="container">
+	<ul id="xstuff" class="container divider">
 		<li class="x-action">
 			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/lipsum/king.jpg" alt="" /></a>
 			<h3><span>X</span>pand Your Knowledge</h3>
@@ -69,7 +69,14 @@ get_header();
 	</ul><!-- #xstuff -->
 
 	<div id="young" class="container">
-		Andrew Young is so cool. I really do think so.
+		<span class="quotemark">&#8220;</span>
+		<blockquote>
+			<p>For decades, millions upon millions of Florida tourists have visited St. Augustine, which is celebrated as 
+<em>America’s oldest city</em> and known for its vital role the nation’s history, yet almost all those people have come and 
+gone without hearing a word about the area’s rich African American heritage.</p>
+
+			<cite>Civil Rights Leader, Andrew Young <span class="dash">&mdash;</span> <a href="#">Read the Full Letter &rarr;</a></cite>
+		</blockquote>
 	</div><!-- #young -->
 
 <?php get_footer(); ?>
