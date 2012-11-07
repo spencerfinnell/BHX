@@ -4,8 +4,13 @@
 	.clearfix;
 
 	.hentry {
-		.size(380px, auto);
+		.size(390px, auto);
 		.pull-left;
+
+		&:nth-child(2n) {
+			margin-right: 0;
+			.pull-right;
+		}
 	}
 }
 

@@ -2109,9 +2109,13 @@ article.hentry.timeline {
   clear: both;
 }
 #stuff-grid .hentry {
-  width: 380px;
+  width: 390px;
   height: auto;
   float: left;
+}
+#stuff-grid .hentry:nth-child(2n) {
+  margin-right: 0;
+  float: right;
 }
 .hentry {
   margin: 0 20px 40px 0 0;
