@@ -45,7 +45,7 @@
 			<li><a href="<?php echo get_post_type_archive_link( 'educational' ); ?>" data-section="#section-educate" class="educate fancybox"><span><i class="icon-graduate"></i></span> Educate</a>
 			<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>" class="sites"><span><i data-icon="&#x27;"></i></span> Sites</a>
 			<li><a href="<?php echo get_post_type_archive_link( 'visit' ); ?>" data-section="#section-visit" class="visit fancybox"><span><i data-icon="&#x23;"></i></span> Visit</a>
-			<li><a href="#" class="store"><span><i data-icon="&#x26;"></i></span> Store</a>
+			<li><a href="<?php echo get_post_type_archive_link( 'product' ); ?>" class="store"><span><i data-icon="&#x26;"></i></span> Store</a>
 		</ul>
 
 		<img src="<?php echo get_template_directory_uri(); ?>/images/hero.jpg" alt="" />

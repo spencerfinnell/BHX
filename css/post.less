@@ -1,29 +1,26 @@
 #stuff-grid {
-	margin: 40px 60px;
+	margin: 30px 60px 40px;
 
 	.clearfix;
 
 	.hentry {
-		margin-right: 20px;
-		padding-bottom: 0;
-
 		.size(400px, auto);
 		.pull-left;
-
-		&:nth-child(2n) {
-			margin-right: 0;
-		}
 	}
 }
 
 .hentry {
-	padding: 40px 0;
+	margin: 0 20px 40px 0 0;
+	padding: 0 0 40px;
 	position: relative;
 	overflow: hidden;
 
-	&.page,
-	&.type-site {
-		padding: 0 0 40px;
+	&:nth-child(2n) {
+		margin-right: 0;
+	}
+
+	&.page {
+		margin: 20px 60px 0;
 	}
 }
 

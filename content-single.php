@@ -5,8 +5,12 @@
  */
 ?>
 
-<div id="page-header" class="no-sorting">
+<div id="page-header" <?php echo ! is_singular( 'product' ) ? ' class="no-sorting"' : null; ?>>
 	<h1 class="page-title"><span><?php the_title(); ?></span></h1>
+
+	<?php if ( is_singular( 'product' ) ) : ?>
+		<span class="page-meta"><?php woocommerce_breadcrumb( array( 'wrap_before' => '', 'wrap_after' => '' ) ); ?>
+	<?php endif; ?>
 </div>
 
 <?php if ( has_post_thumbnail() ) : ?>
@@ -26,12 +30,13 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-<div id="stuff-list">
-	<div class="row">
-		<article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? 'span16' : 'span14 offset1' ) ); ?>>
-			<div id="entry-content">
-				<?php the_content(); ?>
-			</div>
-		</article><!-- #post-<?php the_ID(); ?> -->
+
+<article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? '' : 'page' ) ); ?>>
+	<div id="entry-content">
+		<?php the_content(); ?>
+
+		<?php if ( is_singular( 'product' ) ) : ?>
+			<?php woocommerce_template_single_add_to_cart(); ?>
+		<?php endif; ?>
 	</div>
-</div>
+</article><!-- #post-<?php the_ID(); ?> -->
