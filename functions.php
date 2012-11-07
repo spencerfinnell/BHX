@@ -44,7 +44,6 @@ function bhx_setup() {
 
 	require( get_template_directory() . '/inc/educate.php' );
 	require( get_template_directory() . '/inc/visit.php' );
-	require( get_template_directory() . '/inc/timeline.php' );
 	require( get_template_directory() . '/inc/builder.php' );
 	require( get_template_directory() . '/inc/woocommerce.php' );
 

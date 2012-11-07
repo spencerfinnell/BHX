@@ -1,11 +1,25 @@
 <?php
-
 /**
- * Educational Resources
+ * Visit Functionality
  *
+ * Anything that has to do with the "Visit" section. This
+ * includes Visit post type and trip planner.
+ *
+ * @package BHX
  * @since BHX 1.0
  */
+
+/**
+ * Visit
+ *
+ * Register the custom post type and taxonomies for visit.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
 function bhx_post_type_visit() {
+	/** Custom Post Type */
 	$labels = array(
 		'name'               => __( 'Visit St. Augustine', 'bhx' ),
 		'singular_name'      => __( 'Visit', 'bhx' ),
@@ -13,7 +27,7 @@ function bhx_post_type_visit() {
 		'add_new_item'       => __( 'Add New', 'bhx' ),
 		'edit_item'          => __( 'Edit Item', 'bhx' ),
 		'new_item'           => __( 'New Item', 'bhx' ),
-		'all_items'          => __( 'Visit', 'bhx' ),
+		'all_items'          => __( 'Places', 'bhx' ),
 		'view_item'          => __( 'View Item', 'bhx' ),
 		'search_items'       => __( 'Search Items', 'bhx' ),
 		'not_found'          => __( 'No items found', 'bhx' ),
@@ -38,6 +52,7 @@ function bhx_post_type_visit() {
 	
 	register_post_type( 'visit', $args );
 	
+	/** Category */
 	$labels = array(
 		'name'              => __( 'Categories', 'bhx' ),
 		'singular_name'     => __( 'Category', 'bhx' ),
@@ -64,6 +79,7 @@ function bhx_post_type_visit() {
 
 	register_taxonomy( 'visit-type', array( 'visit' ), $args );
 
+	/** Star Rating */
 	$labels = array(
 		'name'              => __( 'Stars', 'bhx' ),
 		'singular_name'     => __( 'Star', 'bhx' ),
@@ -90,6 +106,7 @@ function bhx_post_type_visit() {
 
 	register_taxonomy( 'visit-stars', array( 'visit' ), $args );
 
+	/** Prices */
 	$labels = array(
 		'name'              => __( 'Pricing', 'bhx' ),
 		'singular_name'     => __( 'Price', 'bhx' ),
@@ -118,6 +135,16 @@ function bhx_post_type_visit() {
 }
 add_action( 'init', 'bhx_post_type_visit' );
 
+/**
+ * Visit Archive
+ *
+ * Use the same archive template as the educational template.
+ * This is to avoid more duplicate templating.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
 function bhx_visit_template() {
 	global $wp_query;
 	

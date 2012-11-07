@@ -3,12 +3,6 @@ table {
 	background-color: @tableBackground;
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-.table,
-.variations,
-.shop_table,
-.cart_totals table {
 	width: 100%;
 	margin-bottom: @baseLineHeight;
 
@@ -54,7 +48,8 @@ table {
 .table-bordered,
 .variations,
 #order_review .shop_table,
-.cart_totals table {
+.cart_totals table,
+.visit-meta {
 	border: 1px solid @tableBorder;
 	border-collapse: separate; // Done so we can round those corners!
 	*border-collapse: collapse; // IE7 can't round corners anyway

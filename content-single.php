@@ -30,13 +30,27 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? '' : 'inner-page' ) ); ?>>
 	<div id="entry-content">
 		<?php the_content(); ?>
 
 		<?php if ( is_singular( 'product' ) ) : ?>
 			<?php woocommerce_template_single_add_to_cart(); ?>
+		<?php endif; ?>
+
+		<?php if ( is_singular( 'visit' ) ) : ?>
+			<table class="visit-meta">
+				<tbody>
+					<tr>
+						<th class="label">Rating</th>
+						<td>Something</td>
+					</tr>
+					<tr>
+						<th class="label">Stars</th>
+						<td>Something</td>
+					</tr>
+				</body>
+			</table>
 		<?php endif; ?>
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
