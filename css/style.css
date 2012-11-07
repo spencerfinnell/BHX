@@ -1275,8 +1275,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.grabber,
-#entry-content p:first-child {
+.grabber {
   font-size: 16px;
   font-weight: normal;
   line-height: 24px;
@@ -2111,6 +2110,9 @@ article.hentry.timeline {
   height: auto;
   float: left;
 }
+#stuff-grid .hentry:nth-child(even) {
+  float: right;
+}
 .hentry {
   margin: 0 20px 40px 0 0;
   padding: 0 0 40px;
@@ -2176,6 +2178,9 @@ article.hentry.timeline {
 #entry-content p {
   margin: 0 0 22px;
   overflow: hidden;
+}
+#entry-content p:last-child {
+  margin-bottom: 0;
 }
 #entry-content .alignleft {
   margin: 0 1.5em 1em 0;

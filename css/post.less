@@ -6,6 +6,10 @@
 	.hentry {
 		.size(400px, auto);
 		.pull-left;
+
+		&:nth-child(even) {
+			.pull-right;
+		}
 	}
 }
 
@@ -79,6 +83,10 @@
 	p {
 		margin: 0 0 22px;
 		overflow: hidden;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	.alignleft {
