@@ -99,7 +99,7 @@ get_header();
 			else :
 		?>
 
-			<blockquote>Use the filtering tools above to find great places to see in St. Augustine.</blockquote>
+			<blockquote class="page-note">Use the filtering tools above to find great places to see in St. Augustine.</blockquote>
 
 		<?php endif; ?>
 
