@@ -82,6 +82,9 @@ function bhx_scripts() {
 	if ( is_home() )
 		wp_enqueue_script( 'jcarousellite', get_template_directory_uri() . '/js/jcarousellite.min.js' );
 
+	if ( is_singular() )
+		wp_enqueue_script( 'blur', get_template_directory_uri() . '/js/blur.min.js' );
+
 	wp_enqueue_script( 'bhx', get_template_directory_uri() . '/js/bhx.js' );
 }
 add_action( 'wp_enqueue_scripts', 'bhx_scripts' );
