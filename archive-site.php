@@ -31,13 +31,13 @@ get_header(); ?>
 				<?php echo implode( '', $output ); ?>
 			</ul>
 			<?php endif; ?>
+
+			<?php get_search_form(); ?>
 		</div>
 
-		<div id="stuff-list">
+		<div id="stuff-grid">
 			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php get_template_part( 'content', 'list' ); ?>
-
+				<?php get_template_part( 'content' ); ?>
 			<?php endwhile; ?>
 		</div>
 

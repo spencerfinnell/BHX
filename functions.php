@@ -63,6 +63,8 @@ function bhx_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'bhx' ),
 	) );
+
+	add_image_size( 'content-grid', 400, 125, true );
 }
 endif; // bhx_setup
 add_action( 'after_setup_theme', 'bhx_setup' );
