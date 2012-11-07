@@ -1280,6 +1280,9 @@ p {
   font-weight: normal;
   line-height: 24px;
 }
+#post-0 {
+  margin: 40px 0 0 -20px;
+}
 #hero {
   background: #181512;
   position: relative;
@@ -2106,12 +2109,9 @@ article.hentry.timeline {
   clear: both;
 }
 #stuff-grid .hentry {
-  width: 400px;
+  width: 380px;
   height: auto;
   float: left;
-}
-#stuff-grid .hentry:nth-child(even) {
-  float: right;
 }
 .hentry {
   margin: 0 20px 40px 0 0;
@@ -2121,8 +2121,9 @@ article.hentry.timeline {
 }
 .hentry:nth-child(2n) {
   margin-right: 0;
+  float: right;
 }
-.hentry.page {
+.hentry.inner-page {
   margin: 20px 60px 0;
 }
 .entry-title {

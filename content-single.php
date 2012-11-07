@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 </script>
 
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? '' : 'page' ) ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? '' : 'inner-page' ) ); ?>>
 	<div id="entry-content">
 		<?php the_content(); ?>
 

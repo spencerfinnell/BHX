@@ -4,12 +4,8 @@
 	.clearfix;
 
 	.hentry {
-		.size(400px, auto);
+		.size(380px, auto);
 		.pull-left;
-
-		&:nth-child(even) {
-			.pull-right;
-		}
 	}
 }
 
@@ -21,9 +17,10 @@
 
 	&:nth-child(2n) {
 		margin-right: 0;
+		.pull-right;
 	}
 
-	&.page {
+	&.inner-page {
 		margin: 20px 60px 0;
 	}
 }
