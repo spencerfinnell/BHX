@@ -71,6 +71,8 @@ add_action( 'after_setup_theme', 'bhx_setup' );
  * Enqueue scripts and styles
  */
 function bhx_scripts() {
+	wp_dequeue_style( 'contact-form-7' );
+
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Patua+One|Glegoo|Droid+Sans' );
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css' );
 

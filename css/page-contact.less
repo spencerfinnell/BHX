@@ -1,0 +1,38 @@
+#entry-content div.wpcf7-validation-errors {
+	margin-bottom: 40px;
+	clear: both;
+	display: none;
+
+	.box-sizing(border-box);
+}
+
+.wpcf7-display-none {
+	.hide;
+}
+
+.wpcf7 .pull-left {
+	.size(220px, auto);
+}
+
+.wpcf7 .pull-right {
+	.size(580px, auto);
+}
+
+.wpcf7 .wpcf7-form-control-wrap {
+	position: relative;
+
+	.wpcf7-not-valid-tip {
+		#font > .sans-serif(12px, bold, 35px);
+		color: @white;
+
+		padding: 0 10px;
+		position: absolute;
+		top: -10px;
+		left: 0;
+		background: @red;
+
+		.border-radius(2px);
+		.size(100%, 35px);
+		.box-sizing(border-box);
+	}
+}

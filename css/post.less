@@ -20,6 +20,10 @@
 	padding: 40px 0;
 	position: relative;
 	overflow: hidden;
+
+	&.page {
+		padding: 0 0 40px;
+	}
 }
 
 .entry-title {
@@ -85,5 +89,44 @@
 
 	&:hover {
 		color: @gray;
+	}
+}
+
+#entry-content {
+	.clearfix;
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		clear: both;
+	}
+
+	h2 {
+		font-size: 24px;
+
+		margin: 1.5em 0 0;
+	}
+
+	h3 {
+		color: @purple;
+
+		margin: 1.5em 0 .5em;
+	}
+
+	p {
+		margin: 0 0 22px;
+		overflow: hidden;
+	}
+
+	.alignleft {
+		margin: 0 1.5em 1em 0;
+
+		.pull-left;
+	}
+
+	.alignright {
+		.pull-right;
 	}
 }
