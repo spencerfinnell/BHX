@@ -19,7 +19,7 @@ function bhx_post_type_visit() {
 		'not_found'          => __( 'No items found', 'bhx' ),
 		'not_found_in_trash' => __( 'No items found in Trash', 'bhx' ), 
 		'parent_item_colon'  => __( 'Item: ', 'bhx' ),
-		'menu_name'          => __( 'Items', 'bhx' )
+		'menu_name'          => __( 'Visit', 'bhx' )
 	);
 	
 	$args = array(
@@ -33,8 +33,7 @@ function bhx_post_type_visit() {
 		'has_archive'         => 'travel', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx'
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 	
 	register_post_type( 'visit', $args );

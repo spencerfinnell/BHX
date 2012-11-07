@@ -19,7 +19,7 @@ function bhx_post_type_timeline() {
 		'not_found'          => __( 'No items found', 'bhx' ),
 		'not_found_in_trash' => __( 'No items found in Trash', 'bhx' ), 
 		'parent_item_colon'  => __( 'Time Period: ', 'bhx' ),
-		'menu_name'          => __( 'Time Periods', 'bhx' )
+		'menu_name'          => __( 'Timeline', 'bhx' )
 	);
 	
 	$args = array(
@@ -34,8 +34,7 @@ function bhx_post_type_timeline() {
 		'has_archive'         => 'visit', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx'
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 
 	register_post_type( 'timeline', $args );

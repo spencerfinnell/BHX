@@ -12,6 +12,75 @@ add_filter( 'pre_get_posts', 'bhx_filter_query_educational' );
  *
  * @since BHX 1.0
  */
+function bhx_post_type_educational_resources() {
+	$labels = array(
+		'name'               => __( 'Educational Resources', 'bhx' ),
+		'singular_name'      => __( 'Educational Resource', 'bhx' ),
+		'add_new'            => __( 'Add New', 'bhx' ),
+		'add_new_item'       => __( 'Add New Resource', 'bhx' ),
+		'edit_item'          => __( 'Edit Resource', 'bhx' ),
+		'new_item'           => __( 'New Resource', 'bhx' ),
+		'all_items'          => __( 'Educate', 'bhx' ),
+		'view_item'          => __( 'View Resource', 'bhx' ),
+		'search_items'       => __( 'Search Resources', 'bhx' ),
+		'not_found'          => __( 'No educational resources found', 'bhx' ),
+		'not_found_in_trash' => __( 'No educational resources in trash', 'bhx' ), 
+		'parent_item_colon'  => __( 'Educational Resource: ', 'bhx' ),
+		'menu_name'          => __( 'Educate', 'bhx' )
+	);
+	
+	$args = array(
+		'labels'              => $labels,
+		'public'              => true,
+		'rewrite'             => array(
+			'slug'       => 'educational',
+			'with_front' => true
+		),
+		'capability_type'     => 'post',
+		'has_archive'         => 'educate', 
+		'hierarchical'        => false,
+		'menu_position'       => null,
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
+	);
+	
+	register_post_type( 'educational', $args );
+	
+	/**
+	 * Category Taxonomy
+	 */
+	$labels = array(
+		'name'              => __( 'Resource Type', 'bhx' ),
+		'singular_name'     => __( 'Resource Type', 'bhx' ),
+		'search_items'      => __( 'Search Types', 'bhx'  ),
+		'all_items'         => __( 'All Types', 'bhx'  ),
+		'parent_item'       => __( 'Parent Type', 'bhx'  ),
+		'parent_item_colon' => __( 'Parent Type:', 'bhx'  ),
+		'edit_item'         => __( 'Edit Type', 'bhx'  ), 
+		'update_item'       => __( 'Update Type', 'bhx'  ),
+		'add_new_item'      => __( 'Add New Type', 'bhx'  ),
+		'new_item_name'     => __( 'New Resource Type Name', 'bhx'  ),
+		'menu_name'         => __( 'Categories', 'bhx'  ),
+	); 	
+
+	$args = array(
+		'labels'       => $labels,
+		'hierarchical' => true,
+		'show_ui'      => true,
+		'query_var'    => true,
+		'rewrite'      => array(
+			'slug' => 'educate'
+		)
+	);
+
+	register_taxonomy( 'educational-resource-type', array( 'educational' ), $args );
+}
+add_action( 'init', 'bhx_post_type_educational_resources' );
+
+/**
+ * Educational Resources
+ *
+ * @since BHX 1.0
+ */
 function bhx_post_type_educational_sites() {
 	$labels = array(
 		'name'               => __( 'Historic Sites', 'bhx' ),
@@ -40,8 +109,7 @@ function bhx_post_type_educational_sites() {
 		'has_archive'         => 'educate/sites', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx'
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 	
 	register_post_type( 'site', $args );
@@ -74,76 +142,6 @@ function bhx_post_type_educational_sites() {
 	register_taxonomy( 'site-type', array( 'site' ), $args );
 }
 add_action( 'init', 'bhx_post_type_educational_sites' );
-
-/**
- * Educational Resources
- *
- * @since BHX 1.0
- */
-function bhx_post_type_educational_resources() {
-	$labels = array(
-		'name'               => __( 'Educational Resources', 'bhx' ),
-		'singular_name'      => __( 'Educational Resource', 'bhx' ),
-		'add_new'            => __( 'Add New', 'bhx' ),
-		'add_new_item'       => __( 'Add New Resource', 'bhx' ),
-		'edit_item'          => __( 'Edit Resource', 'bhx' ),
-		'new_item'           => __( 'New Resource', 'bhx' ),
-		'all_items'          => __( 'Educate', 'bhx' ),
-		'view_item'          => __( 'View Resource', 'bhx' ),
-		'search_items'       => __( 'Search Resources', 'bhx' ),
-		'not_found'          => __( 'No educational resources found', 'bhx' ),
-		'not_found_in_trash' => __( 'No educational resources in trash', 'bhx' ), 
-		'parent_item_colon'  => __( 'Educational Resource: ', 'bhx' ),
-		'menu_name'          => __( 'Educational Resources', 'bhx' )
-	);
-	
-	$args = array(
-		'labels'              => $labels,
-		'public'              => true,
-		'rewrite'             => array(
-			'slug'       => 'educational',
-			'with_front' => true
-		),
-		'capability_type'     => 'post',
-		'has_archive'         => 'educate', 
-		'hierarchical'        => false,
-		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'show_in_menu'        => 'bhx'
-	);
-	
-	register_post_type( 'educational', $args );
-	
-	/**
-	 * Category Taxonomy
-	 */
-	$labels = array(
-		'name'              => __( 'Resource Type', 'bhx' ),
-		'singular_name'     => __( 'Resource Type', 'bhx' ),
-		'search_items'      => __( 'Search Types', 'bhx'  ),
-		'all_items'         => __( 'All Types', 'bhx'  ),
-		'parent_item'       => __( 'Parent Type', 'bhx'  ),
-		'parent_item_colon' => __( 'Parent Type:', 'bhx'  ),
-		'edit_item'         => __( 'Edit Type', 'bhx'  ), 
-		'update_item'       => __( 'Update Type', 'bhx'  ),
-		'add_new_item'      => __( 'Add New Type', 'bhx'  ),
-		'new_item_name'     => __( 'New Resource Type Name', 'bhx'  ),
-		'menu_name'         => __( 'Resource Types', 'bhx'  ),
-	); 	
-
-	$args = array(
-		'labels'       => $labels,
-		'hierarchical' => true,
-		'show_ui'      => true,
-		'query_var'    => true,
-		'rewrite'      => array(
-			'slug' => 'educate'
-		)
-	);
-
-	register_taxonomy( 'educational-resource-type', array( 'educational' ), $args );
-}
-add_action( 'init', 'bhx_post_type_educational_resources' );
 
 function bhx_sites_archive() {
 	global $wp_query;
