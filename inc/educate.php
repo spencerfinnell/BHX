@@ -25,6 +25,9 @@
  * @return void
  */
 function bhx_filter_query_educational( $query ) {
+	if ( is_admin() )
+		return;
+	
 	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' ) {
 		$query->set( 'post_type', array( 'educational', 'site' ) );
 	}
@@ -91,7 +94,7 @@ function bhx_post_type_educational_resources() {
 		'update_item'       => __( 'Update Type', 'bhx'  ),
 		'add_new_item'      => __( 'Add New Type', 'bhx'  ),
 		'new_item_name'     => __( 'New Resource Type Name', 'bhx'  ),
-		'menu_name'         => __( 'Categories', 'bhx'  ),
+		'menu_name'         => __( 'Resource Types', 'bhx'  ),
 	); 	
 
 	$args = array(
@@ -107,6 +110,80 @@ function bhx_post_type_educational_resources() {
 	register_taxonomy( 'educational-resource-type', array( 'educational' ), $args );
 }
 add_action( 'init', 'bhx_post_type_educational_resources' );
+
+/**
+ * Custom Columns
+ *
+ * @since BHX 1.0
+ *
+ * @param array $columns The columns to display
+ * @return array $columns The modified list of columns to display
+ */
+function bhx_post_type_educational_columns( $columns ) {
+	$columns = array(
+		'cb'       => '<input type="checkbox" />',
+		'title'    => __( 'Site', 'bhx' ),
+		'category' => __( 'Resource Type', 'bhx' ),
+		'date'     => __( 'Published', 'bhx' )
+	);
+
+	return $columns;
+}
+add_filter( 'manage_edit-educational_columns', 'bhx_post_type_educational_columns' ) ;
+
+/**
+ * Custom Column Content
+ *
+ * @since BHX 1.0
+ *
+ * @param string $column The current column slug
+ * @param in $post_id The current row's associated post ID
+ * @return void
+ */
+function bhx_post_type_educational_columns_manage( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+		case 'category' :
+			$terms = get_the_terms( $post_id, 'educational-resource-type' );
+			
+			if ( ! empty( $terms ) ) {
+				$out = array();
+
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'educational-resource-type' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'educational-resource-type', 'display' ) )
+					);
+				}
+
+				echo join( ', ', $out );
+			}
+			break;
+		case 'location' :
+			echo 'Somewhere';
+		default :
+			break;
+	}
+}
+add_action( 'manage_educational_posts_custom_column', 'bhx_post_type_educational_columns_manage', 10, 2 );
+
+/**
+ * Taxonomy Sorting
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_educational_sort() {
+	global $typenow;
+ 
+	if ( $typenow != 'educational' )
+		return;
+
+	bhx_post_type_taxonomy_sort( array( 'educational-resource-type' ) );
+}
+add_action( 'restrict_manage_posts', 'bhx_post_type_educational_sort' );
 
 /** Historic Sites ***=***********************************************************/
 
@@ -185,6 +262,81 @@ function bhx_post_type_site() {
 add_action( 'init', 'bhx_post_type_site' );
 
 /**
+ * Taxonomy Sorting
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_site_sort() {
+	global $typenow;
+ 
+	if ( $typenow != 'site' )
+		return;
+
+	bhx_post_type_taxonomy_sort( array( 'site-type' ) );
+}
+add_action( 'restrict_manage_posts', 'bhx_post_type_site_sort' );
+
+/**
+ * Custom Columns
+ *
+ * @since BHX 1.0
+ *
+ * @param array $columns The columns to display
+ * @return array $columns The modified list of columns to display
+ */
+function bhx_post_type_site_columns( $columns ) {
+	$columns = array(
+		'cb'       => '<input type="checkbox" />',
+		'title'    => __( 'Site', 'bhx' ),
+		'category' => __( 'Category', 'bhx' ),
+		'location' => __( 'Location', 'bhx' ),
+		'date'     => __( 'Published', 'bhx' )
+	);
+
+	return $columns;
+}
+add_filter( 'manage_edit-site_columns', 'bhx_post_type_site_columns' ) ;
+
+/**
+ * Custom Column Content
+ *
+ * @since BHX 1.0
+ *
+ * @param string $column The current column slug
+ * @param in $post_id The current row's associated post ID
+ * @return void
+ */
+function bhx_post_type_site_columns_manage( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+		case 'category' :
+			$terms = get_the_terms( $post_id, 'site-type' );
+			
+			if ( ! empty( $terms ) ) {
+				$out = array();
+
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'site-type' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'site-type', 'display' ) )
+					);
+				}
+
+				echo join( ', ', $out );
+			}
+			break;
+		case 'location' :
+			echo 'Somewhere';
+		default :
+			break;
+	}
+}
+add_action( 'manage_site_posts_custom_column', 'bhx_post_type_site_columns_manage', 10, 2 );
+
+/**
  * Site Taxonomy Archive
  *
  * Instead of using a file such as `taxonomy-site-type.php`, that
@@ -252,7 +404,8 @@ function bhx_post_type_timeline() {
 		'has_archive'         => 'visit', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' )
+		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'show_in_menu'        => 'edit.php?post_type=educational'
 	);
 
 	register_post_type( 'timeline', $args );

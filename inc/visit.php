@@ -136,6 +136,112 @@ function bhx_post_type_visit() {
 add_action( 'init', 'bhx_post_type_visit' );
 
 /**
+ * Custom Columns
+ *
+ * @since BHX 1.0
+ *
+ * @param array $columns The columns to display
+ * @return array $columns The modified list of columns to display
+ */
+function bhx_post_type_visit_columns( $columns ) {
+	$columns = array(
+		'cb'       => '<input type="checkbox" />',
+		'title'    => __( 'Title', 'bhx' ),
+		'category' => __( 'Category', 'bhx' ),
+		'price'    => __( 'Price', 'bhx' ),
+		'stars'    => __( 'Stars', 'bhx' ),
+		'date'     => __( 'Published', 'bhx' )
+	);
+
+	return $columns;
+}
+add_filter( 'manage_edit-visit_columns', 'bhx_post_type_visit_columns' ) ;
+
+/**
+ * Custom Column Content
+ *
+ * @since BHX 1.0
+ *
+ * @param string $column The current column slug
+ * @param in $post_id The current row's associated post ID
+ * @return void
+ */
+function bhx_post_type_visit_columns_manage( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+		case 'category' :
+			$terms = get_the_terms( $post_id, 'visit-type' );
+			
+			if ( ! empty( $terms ) ) {
+				$out = array();
+
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-type' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-type', 'display' ) )
+					);
+				}
+
+				echo join( ', ', $out );
+			}
+			break;
+		case 'price' :
+			$terms = get_the_terms( $post_id, 'visit-price' );
+			
+			if ( ! empty( $terms ) ) {
+				$out = array();
+
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-price' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-price', 'display' ) )
+					);
+				}
+
+				echo join( ', ', $out );
+			}
+			break;
+		case 'stars' :
+			$terms = get_the_terms( $post_id, 'visit-stars' );
+			
+			if ( ! empty( $terms ) ) {
+				$out = array();
+
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-stars' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-stars', 'display' ) )
+					);
+				}
+
+				echo join( ', ', $out );
+			}
+			break;
+		default :
+			break;
+	}
+}
+add_action( 'manage_visit_posts_custom_column', 'bhx_post_type_visit_columns_manage', 10, 2 );
+
+/**
+ * Taxonomy Sorting
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_visit_sort() {
+	global $typenow;
+ 
+	if ( $typenow != 'visit' )
+		return;
+
+	bhx_post_type_taxonomy_sort( array( 'visit-type', 'visit-price', 'visit-stars' ) );
+}
+add_action( 'restrict_manage_posts', 'bhx_post_type_visit_sort' );
+
+/**
  * Visit Archive
  *
  * Use the same archive template as the educational template.
