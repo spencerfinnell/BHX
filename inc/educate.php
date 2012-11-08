@@ -662,7 +662,8 @@ function bhx_timeline_json() {
 		return;
 
 	$timeline_args = array(
-		'post_type' => array( 'timeline' )
+		'post_type'      => array( 'timeline' ),
+		'posts_per_page' => -1
 	);
 
 	$count = 0;
