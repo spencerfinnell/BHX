@@ -54,6 +54,9 @@ jQuery(document).ready(function($) {
 		<?php endif; ?>
 
 		<?php if ( is_singular( 'site' ) ) : ?>
+			<?php
+				$link = esc_url( get_post_meta( $post->ID, 'bhx-link', true ) );
+			?>
 			<table class="site-meta">
 				<tbody>
 					<tr>
@@ -62,7 +65,7 @@ jQuery(document).ready(function($) {
 					</tr>
 					<tr>
 						<th class="label"><?php _e( 'More Information' ); ?></th>
-						<td><?php echo get_post_meta( $post->ID, 'bhx-link', true ); ?></td>
+						<td><a href="<?php echo $link; ?>"><?php echo $link; ?></a></td>
 					</tr>
 				</body>
 			</table>
