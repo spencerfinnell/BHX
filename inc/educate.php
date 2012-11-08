@@ -394,8 +394,7 @@ function bhx_post_type_timeline() {
 	
 	$args = array(
 		'labels'              => $labels,
-		'public'              => false,
-		'show_ui'             => true,
+		'public'              => true,
 		'rewrite'             => array(
 			'slug'       => 'timeline',
 			'with_front' => false
@@ -604,10 +603,13 @@ function bhx_timeline_json() {
 		if ( ! $date )
 			continue;
 
+		$content = wp_trim_words( get_the_content(), 35 );
+		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '">Read More &rarr;</a></p>';
+
 		$dates[$count][ 'startDate' ] = $date;
 		$dates[$count][ 'endDate' ]   = $date;
 		$dates[$count][ 'headline' ]  = get_the_title();
-		$dates[$count][ 'text' ]      = wpautop( get_the_content() );
+		$dates[$count][ 'text' ]      = wpautop( $content );
 		$dates[$count][ 'asset' ]     = array(
 			'media' => $image[0]
 		);
