@@ -23,5 +23,25 @@ function bhx_menu_pages() {
 	remove_menu_page( 'edit.php' );
 	remove_menu_page( 'link-manager.php' );
 	remove_menu_page( 'edit-comments.php' );
+
+	add_admin_menu_separator(32);
 }
 add_action( 'admin_menu', 'bhx_menu_pages' );
+
+function add_admin_menu_separator($position) {
+	global $menu;
+
+	$index = 0;
+	
+	foreach($menu as $offset => $section) {
+		if ( substr( $section[2], 0, 9) == 'separator' )
+			$index++;
+
+		if ( $offset>=$position ) {
+			$menu[$position] = array('','read',"separator{$index}",'','wp-menu-separator');
+			break;
+		}
+	}
+	
+	ksort( $menu );
+}

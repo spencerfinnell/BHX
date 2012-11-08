@@ -47,7 +47,8 @@ function bhx_post_type_visit() {
 		'has_archive'         => 'travel', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' )
+		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'menu_position'       => 50
 	);
 	
 	register_post_type( 'visit', $args );
