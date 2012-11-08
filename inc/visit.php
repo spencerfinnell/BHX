@@ -136,6 +136,71 @@ function bhx_post_type_visit() {
 add_action( 'init', 'bhx_post_type_visit' );
 
 /**
+ * Metaboxes
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_visit_metabox() {
+	add_meta_box( 'visit-info', __( 'Information', 'bhx' ), 'bhx_post_type_visit_metabox_information', 'visit', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'bhx_post_type_visit_metabox' );
+
+/**
+ * Information Metabox
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_visit_metabox_information() {
+	global $post;
+
+	wp_nonce_field( 'bhx-visit-information', 'bhx-save-visit-information' );
+
+	$link = get_post_meta( $post->ID, 'bhx-link', true );
+?>
+	<p>
+		<label for="bhx-link"><?php _e( 'More Information Link', 'bhx' ); ?>: <br />
+		<input type="text" name="bhx-link" id="bhx-link" style="width: 100%" class="code" value="<?php echo esc_attr( $link ); ?>" />
+	</p>
+<?php
+}
+
+/**
+ * Save the Time Period Metabox
+ *
+ * Convert the human date to a format that can be used by
+ * the interactive timeline. It is automatically reformatted on ouput.
+ *
+ * @since BHX 1.0
+ *
+ * @param int $post_id The ID of the post being saved
+ * @return void
+ */
+function bhx_post_type_visit_metabox_save( $post_id ) {
+	if ( empty( $_POST ) )
+		return $post_id;
+
+	/** Don't save when autosaving */
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		return $post_id;
+
+	if ( ! isset( $_POST[ 'post_type' ] ) || ! in_array( $_POST[ 'post_type' ], array( 'visit' ) ) )
+		return $post_id;
+	
+	/** Check Nonce */
+	if ( ! wp_verify_nonce( $_POST[ 'bhx-save-visit-information' ], 'bhx-visit-information' ) )
+		return $post_id;
+	
+	$link = trim( esc_attr( $_POST[ 'bhx-link' ] ) );
+
+	update_post_meta( $post_id, 'bhx-link', $link );
+}
+add_action( 'save_post', 'bhx_post_type_visit_metabox_save' );
+
+/**
  * Custom Columns
  *
  * @since BHX 1.0

@@ -262,6 +262,79 @@ function bhx_post_type_site() {
 add_action( 'init', 'bhx_post_type_site' );
 
 /**
+ * Metaboxes
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_site_metabox() {
+	add_meta_box( 'site-info', __( 'Site Information', 'bhx' ), 'bhx_post_type_site_metabox_information', 'site', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'bhx_post_type_site_metabox' );
+
+/**
+ * Information Metabox
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_site_metabox_information() {
+	global $post;
+
+	wp_nonce_field( 'bhx-site-information', 'bhx-save-site-information' );
+
+	$link = get_post_meta( $post->ID, 'bhx-link', true );
+	$loc  = get_post_meta( $post->ID, 'bhx-location', true );
+?>
+	<p>
+		<label for="bhx-link"><?php _e( 'More Information Link', 'bhx' ); ?>: <br />
+		<input type="text" name="bhx-link" id="bhx-link" style="width: 100%" class="code" value="<?php echo esc_attr( $link ); ?>" />
+	</p>
+
+	<p>
+		<label for="bhx-location"><?php _e( 'Longitude and Latitude', 'bhx' ); ?>: <br />
+		<input type="text" name="bhx-location" id="bhx-location" style="width: 100%" class="code" value="<?php echo esc_attr( $loc ); ?>" />
+	</p>
+<?php
+}
+
+/**
+ * Save the Time Period Metabox
+ *
+ * Convert the human date to a format that can be used by
+ * the interactive timeline. It is automatically reformatted on ouput.
+ *
+ * @since BHX 1.0
+ *
+ * @param int $post_id The ID of the post being saved
+ * @return void
+ */
+function bhx_post_type_site_metabox_save( $post_id ) {
+	if ( empty( $_POST ) )
+		return $post_id;
+
+	/** Don't save when autosaving */
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		return $post_id;
+
+	if ( ! isset( $_POST[ 'post_type' ] ) || ! in_array( $_POST[ 'post_type' ], array( 'site' ) ) )
+		return $post_id;
+	
+	/** Check Nonce */
+	if ( ! wp_verify_nonce( $_POST[ 'bhx-save-site-information' ], 'bhx-site-information' ) )
+		return $post_id;
+	
+	$link = trim( esc_attr( $_POST[ 'bhx-link' ] ) );
+	$loc  = esc_attr( $_POST[ 'bhx-location' ] );
+
+	update_post_meta( $post_id, 'bhx-link', $link );
+	update_post_meta( $post_id, 'bhx-location', $loc );
+}
+add_action( 'save_post', 'bhx_post_type_site_metabox_save' );
+
+/**
  * Taxonomy Sorting
  *
  * @since BHX 1.0
@@ -329,7 +402,7 @@ function bhx_post_type_site_columns_manage( $column, $post_id ) {
 			}
 			break;
 		case 'location' :
-			echo 'Somewhere';
+			echo get_post_meta( $post->ID, 'bhx-location', true );
 		default :
 			break;
 	}
