@@ -74,8 +74,7 @@ function bhx_post_type_educational_resources() {
 		'has_archive'         => 'educate', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'menu_position'       => 50
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 	
 	register_post_type( 'educational', $args );
@@ -136,8 +135,7 @@ function bhx_post_type_site() {
 		'not_found'          => __( 'No sites found', 'bhx' ),
 		'not_found_in_trash' => __( 'No sites found in Trash', 'bhx' ), 
 		'parent_item_colon'  => __( 'Site: ', 'bhx' ),
-		'menu_name'          => __( 'Sites', 'bhx' ),
-		'menu_position'       => 50
+		'menu_name'          => __( 'Sites', 'bhx' )
 	);
 	
 	$args = array(
@@ -151,8 +149,7 @@ function bhx_post_type_site() {
 		'has_archive'         => 'educate/sites', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'menu_position'       => 50
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 	
 	register_post_type( 'site', $args );
@@ -255,8 +252,7 @@ function bhx_post_type_timeline() {
 		'has_archive'         => 'visit', 
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'menu_position'       => 50
+		'supports'            => array( 'title', 'editor', 'thumbnail' )
 	);
 
 	register_post_type( 'timeline', $args );
