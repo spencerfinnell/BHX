@@ -27,7 +27,7 @@
 function bhx_filter_query_educational( $query ) {
 	if ( is_admin() )
 		return;
-	
+
 	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' ) {
 		$query->set( 'post_type', array( 'educational', 'site' ) );
 	}
@@ -413,6 +413,134 @@ function bhx_post_type_timeline() {
 add_action( 'init', 'bhx_post_type_timeline' );
 
 /**
+ * Custom Columns
+ *
+ * @since BHX 1.0
+ *
+ * @param array $columns The columns to display
+ * @return array $columns The modified list of columns to display
+ */
+function bhx_post_type_timeline_columns( $columns ) {
+	$columns = array(
+		'cb'       => '<input type="checkbox" />',
+		'title'    => __( 'Site', 'bhx' ),
+		'period'   => __( 'Time Period', 'bhx' )
+	);
+
+	return $columns;
+}
+add_filter( 'manage_edit-timeline_columns', 'bhx_post_type_timeline_columns' ) ;
+
+/**
+ * Custom Column Content
+ *
+ * @since BHX 1.0
+ *
+ * @param string $column The current column slug
+ * @param in $post_id The current row's associated post ID
+ * @return void
+ */
+function bhx_post_type_timeline_columns_manage( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+		case 'period' :
+			echo bhx_post_type_timeline_formatted_date( $post_id );
+			break;
+		default :
+			break;
+	}
+}
+add_action( 'manage_timeline_posts_custom_column', 'bhx_post_type_timeline_columns_manage', 10, 2 );
+
+/**
+ * Metaboxes
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_timeline_metabox() {
+	add_meta_box( 'timeline-date', __( 'Time Period', 'bhx' ), 'bhx_post_type_timeline_metabox_time', 'timeline', 'side', 'high' );
+}
+add_action( 'add_meta_boxes', 'bhx_post_type_timeline_metabox' );
+
+/**
+ * Time metabox output
+ *
+ * Outputs a single input to add a date the time happened.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_timeline_metabox_time() {
+	global $post;
+
+	wp_nonce_field( 'bhx-time-period', 'bhx-save-time-period' );
+?>
+	<input type="text" name="bhx-time-period" id="bhx-time-period" style="width: 100%" value="<?php echo bhx_post_type_timeline_formatted_date( $post->ID ); ?>" />
+<?php
+}
+
+/**
+ * Save the Time Period Metabox
+ *
+ * Convert the human date to a format that can be used by
+ * the interactive timeline. It is automatically reformatted on ouput.
+ *
+ * @since BHX 1.0
+ *
+ * @param int $post_id The ID of the post being saved
+ * @return void
+ */
+function bhx_post_type_timeline_metabox_save( $post_id ) {
+	if ( empty( $_POST ) )
+		return $post_id;
+
+	/** Don't save when autosaving */
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		return $post_id;
+
+	if ( ! isset( $_POST[ 'post_type' ] ) || ! in_array( $_POST[ 'post_type' ], array( 'timeline' ) ) )
+		return $post_id;
+	
+	/** Check Nonce */
+	if ( ! wp_verify_nonce( $_POST[ 'bhx-save-time-period' ], 'bhx-time-period' ) )
+		return $post_id;
+		
+	$period = esc_attr( $_POST[ 'bhx-time-period' ] );
+	$period = new DateTime( $period );
+
+	update_post_meta( $post_id, 'bhx-time-period', $period->format( 'Y,m,d' ) );
+}
+add_action( 'save_post', 'bhx_post_type_timeline_metabox_save' );
+
+/**
+ * Format the Time Period
+ *
+ * Create a date from the weird format used by the Timeline,
+ * and output it in its localized format.
+ *
+ * @since BHX 1.0
+ *
+ * @param int $post_id The ID of the post being saved
+ * @return void
+ */
+function bhx_post_type_timeline_formatted_date( $post_id ) {
+	$period = get_post_meta( $post_id, 'bhx-time-period', true );
+
+	if ( ! $period )
+		$period = null;
+	else {
+		$period = DateTime::createFromFormat( 'Y,m,d', $period );
+		$period = $period->format( get_option( 'date_format' ) );
+	}
+
+	return esc_attr( $period );
+}
+
+/**
  * Timeline Permalink
  *
  * Create a permalink for querying the timeline JSON
@@ -471,9 +599,13 @@ function bhx_timeline_json() {
 	
 	while ( $times->have_posts() ) : $times->the_post();
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
-		
-		$dates[$count][ 'startDate' ] = date( 'Y,m,d', $post->post_date );
-		$dates[$count][ 'endDate' ]   = date( 'Y,m,d', $post->post_date );
+		$date  = get_post_meta( get_the_ID(), 'bhx-time-period', true );
+
+		if ( ! $date )
+			continue;
+
+		$dates[$count][ 'startDate' ] = $date;
+		$dates[$count][ 'endDate' ]   = $date;
 		$dates[$count][ 'headline' ]  = get_the_title();
 		$dates[$count][ 'text' ]      = wpautop( get_the_content() );
 		$dates[$count][ 'asset' ]     = array(
@@ -486,7 +618,7 @@ function bhx_timeline_json() {
 	$output = array(
 		'timeline' => array(
 			'type'           => 'default',
-			'startDate'      => date( 'Y,m,d', $times->posts[0]->post_date ),
+			'startDate'      => get_post_meta( $times->posts[0]->ID, 'bhx-time-period', true ),
 			'start_at_slide' => 0,
 			'date'           => $dates
 		)
