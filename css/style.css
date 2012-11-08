@@ -519,7 +519,8 @@ table tbody + tbody {
 .variations,
 #order_review .shop_table,
 .cart_totals table,
-.visit-meta {
+.visit-meta,
+.site-meta {
   border: 1px solid #dddddd;
   border-collapse: separate;
   *border-collapse: collapse;
@@ -533,11 +534,13 @@ table tbody + tbody {
 #order_review .shop_table th,
 .cart_totals table th,
 .visit-meta th,
+.site-meta th,
 .table-bordered td,
 .variations td,
 #order_review .shop_table td,
 .cart_totals table td,
-.visit-meta td {
+.visit-meta td,
+.site-meta td {
   border-left: 1px solid #dddddd;
 }
 .table-bordered caption + thead tr:first-child th,
@@ -545,46 +548,55 @@ table tbody + tbody {
 #order_review .shop_table caption + thead tr:first-child th,
 .cart_totals table caption + thead tr:first-child th,
 .visit-meta caption + thead tr:first-child th,
+.site-meta caption + thead tr:first-child th,
 .table-bordered caption + tbody tr:first-child th,
 .variations caption + tbody tr:first-child th,
 #order_review .shop_table caption + tbody tr:first-child th,
 .cart_totals table caption + tbody tr:first-child th,
 .visit-meta caption + tbody tr:first-child th,
+.site-meta caption + tbody tr:first-child th,
 .table-bordered caption + tbody tr:first-child td,
 .variations caption + tbody tr:first-child td,
 #order_review .shop_table caption + tbody tr:first-child td,
 .cart_totals table caption + tbody tr:first-child td,
 .visit-meta caption + tbody tr:first-child td,
+.site-meta caption + tbody tr:first-child td,
 .table-bordered colgroup + thead tr:first-child th,
 .variations colgroup + thead tr:first-child th,
 #order_review .shop_table colgroup + thead tr:first-child th,
 .cart_totals table colgroup + thead tr:first-child th,
 .visit-meta colgroup + thead tr:first-child th,
+.site-meta colgroup + thead tr:first-child th,
 .table-bordered colgroup + tbody tr:first-child th,
 .variations colgroup + tbody tr:first-child th,
 #order_review .shop_table colgroup + tbody tr:first-child th,
 .cart_totals table colgroup + tbody tr:first-child th,
 .visit-meta colgroup + tbody tr:first-child th,
+.site-meta colgroup + tbody tr:first-child th,
 .table-bordered colgroup + tbody tr:first-child td,
 .variations colgroup + tbody tr:first-child td,
 #order_review .shop_table colgroup + tbody tr:first-child td,
 .cart_totals table colgroup + tbody tr:first-child td,
 .visit-meta colgroup + tbody tr:first-child td,
+.site-meta colgroup + tbody tr:first-child td,
 .table-bordered thead:first-child tr:first-child th,
 .variations thead:first-child tr:first-child th,
 #order_review .shop_table thead:first-child tr:first-child th,
 .cart_totals table thead:first-child tr:first-child th,
 .visit-meta thead:first-child tr:first-child th,
+.site-meta thead:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child th,
 .variations tbody:first-child tr:first-child th,
 #order_review .shop_table tbody:first-child tr:first-child th,
 .cart_totals table tbody:first-child tr:first-child th,
 .visit-meta tbody:first-child tr:first-child th,
+.site-meta tbody:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child td,
 .variations tbody:first-child tr:first-child td,
 #order_review .shop_table tbody:first-child tr:first-child td,
 .cart_totals table tbody:first-child tr:first-child td,
-.visit-meta tbody:first-child tr:first-child td {
+.visit-meta tbody:first-child tr:first-child td,
+.site-meta tbody:first-child tr:first-child td {
   border-top: 0;
 }
 .table-bordered thead:first-child tr:first-child th:first-child,
@@ -592,11 +604,13 @@ table tbody + tbody {
 #order_review .shop_table thead:first-child tr:first-child th:first-child,
 .cart_totals table thead:first-child tr:first-child th:first-child,
 .visit-meta thead:first-child tr:first-child th:first-child,
+.site-meta thead:first-child tr:first-child th:first-child,
 .table-bordered tbody:first-child tr:first-child td:first-child,
 .variations tbody:first-child tr:first-child td:first-child,
 #order_review .shop_table tbody:first-child tr:first-child td:first-child,
 .cart_totals table tbody:first-child tr:first-child td:first-child,
-.visit-meta tbody:first-child tr:first-child td:first-child {
+.visit-meta tbody:first-child tr:first-child td:first-child,
+.site-meta tbody:first-child tr:first-child td:first-child {
   -webkit-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -606,11 +620,13 @@ table tbody + tbody {
 #order_review .shop_table thead:first-child tr:first-child th:last-child,
 .cart_totals table thead:first-child tr:first-child th:last-child,
 .visit-meta thead:first-child tr:first-child th:last-child,
+.site-meta thead:first-child tr:first-child th:last-child,
 .table-bordered tbody:first-child tr:first-child td:last-child,
 .variations tbody:first-child tr:first-child td:last-child,
 #order_review .shop_table tbody:first-child tr:first-child td:last-child,
 .cart_totals table tbody:first-child tr:first-child td:last-child,
-.visit-meta tbody:first-child tr:first-child td:last-child {
+.visit-meta tbody:first-child tr:first-child td:last-child,
+.site-meta tbody:first-child tr:first-child td:last-child {
   -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
@@ -620,16 +636,19 @@ table tbody + tbody {
 #order_review .shop_table thead:last-child tr:last-child th:first-child,
 .cart_totals table thead:last-child tr:last-child th:first-child,
 .visit-meta thead:last-child tr:last-child th:first-child,
+.site-meta thead:last-child tr:last-child th:first-child,
 .table-bordered tbody:last-child tr:last-child td:first-child,
 .variations tbody:last-child tr:last-child td:first-child,
 #order_review .shop_table tbody:last-child tr:last-child td:first-child,
 .cart_totals table tbody:last-child tr:last-child td:first-child,
 .visit-meta tbody:last-child tr:last-child td:first-child,
+.site-meta tbody:last-child tr:last-child td:first-child,
 .table-bordered tfoot:last-child tr:last-child td:first-child,
 .variations tfoot:last-child tr:last-child td:first-child,
 #order_review .shop_table tfoot:last-child tr:last-child td:first-child,
 .cart_totals table tfoot:last-child tr:last-child td:first-child,
-.visit-meta tfoot:last-child tr:last-child td:first-child {
+.visit-meta tfoot:last-child tr:last-child td:first-child,
+.site-meta tfoot:last-child tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
@@ -642,16 +661,19 @@ table tbody + tbody {
 #order_review .shop_table thead:last-child tr:last-child th:last-child,
 .cart_totals table thead:last-child tr:last-child th:last-child,
 .visit-meta thead:last-child tr:last-child th:last-child,
+.site-meta thead:last-child tr:last-child th:last-child,
 .table-bordered tbody:last-child tr:last-child td:last-child,
 .variations tbody:last-child tr:last-child td:last-child,
 #order_review .shop_table tbody:last-child tr:last-child td:last-child,
 .cart_totals table tbody:last-child tr:last-child td:last-child,
 .visit-meta tbody:last-child tr:last-child td:last-child,
+.site-meta tbody:last-child tr:last-child td:last-child,
 .table-bordered tfoot:last-child tr:last-child td:last-child,
 .variations tfoot:last-child tr:last-child td:last-child,
 #order_review .shop_table tfoot:last-child tr:last-child td:last-child,
 .cart_totals table tfoot:last-child tr:last-child td:last-child,
-.visit-meta tfoot:last-child tr:last-child td:last-child {
+.visit-meta tfoot:last-child tr:last-child td:last-child,
+.site-meta tfoot:last-child tr:last-child td:last-child {
   -webkit-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
@@ -661,21 +683,25 @@ table tbody + tbody {
 #order_review .shop_table caption + thead tr:first-child th:first-child,
 .cart_totals table caption + thead tr:first-child th:first-child,
 .visit-meta caption + thead tr:first-child th:first-child,
+.site-meta caption + thead tr:first-child th:first-child,
 .table-bordered caption + tbody tr:first-child td:first-child,
 .variations caption + tbody tr:first-child td:first-child,
 #order_review .shop_table caption + tbody tr:first-child td:first-child,
 .cart_totals table caption + tbody tr:first-child td:first-child,
 .visit-meta caption + tbody tr:first-child td:first-child,
+.site-meta caption + tbody tr:first-child td:first-child,
 .table-bordered colgroup + thead tr:first-child th:first-child,
 .variations colgroup + thead tr:first-child th:first-child,
 #order_review .shop_table colgroup + thead tr:first-child th:first-child,
 .cart_totals table colgroup + thead tr:first-child th:first-child,
 .visit-meta colgroup + thead tr:first-child th:first-child,
+.site-meta colgroup + thead tr:first-child th:first-child,
 .table-bordered colgroup + tbody tr:first-child td:first-child,
 .variations colgroup + tbody tr:first-child td:first-child,
 #order_review .shop_table colgroup + tbody tr:first-child td:first-child,
 .cart_totals table colgroup + tbody tr:first-child td:first-child,
-.visit-meta colgroup + tbody tr:first-child td:first-child {
+.visit-meta colgroup + tbody tr:first-child td:first-child,
+.site-meta colgroup + tbody tr:first-child td:first-child {
   -webkit-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -685,21 +711,25 @@ table tbody + tbody {
 #order_review .shop_table caption + thead tr:first-child th:last-child,
 .cart_totals table caption + thead tr:first-child th:last-child,
 .visit-meta caption + thead tr:first-child th:last-child,
+.site-meta caption + thead tr:first-child th:last-child,
 .table-bordered caption + tbody tr:first-child td:last-child,
 .variations caption + tbody tr:first-child td:last-child,
 #order_review .shop_table caption + tbody tr:first-child td:last-child,
 .cart_totals table caption + tbody tr:first-child td:last-child,
 .visit-meta caption + tbody tr:first-child td:last-child,
+.site-meta caption + tbody tr:first-child td:last-child,
 .table-bordered colgroup + thead tr:first-child th:last-child,
 .variations colgroup + thead tr:first-child th:last-child,
 #order_review .shop_table colgroup + thead tr:first-child th:last-child,
 .cart_totals table colgroup + thead tr:first-child th:last-child,
 .visit-meta colgroup + thead tr:first-child th:last-child,
+.site-meta colgroup + thead tr:first-child th:last-child,
 .table-bordered colgroup + tbody tr:first-child td:last-child,
 .variations colgroup + tbody tr:first-child td:last-child,
 #order_review .shop_table colgroup + tbody tr:first-child td:last-child,
 .cart_totals table colgroup + tbody tr:first-child td:last-child,
-.visit-meta colgroup + tbody tr:first-child td:last-child {
+.visit-meta colgroup + tbody tr:first-child td:last-child,
+.site-meta colgroup + tbody tr:first-child td:last-child {
   -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;

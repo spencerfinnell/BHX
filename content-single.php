@@ -52,5 +52,20 @@ jQuery(document).ready(function($) {
 				</body>
 			</table>
 		<?php endif; ?>
+
+		<?php if ( is_singular( 'site' ) ) : ?>
+			<table class="site-meta">
+				<tbody>
+					<tr>
+						<th class="label"><?php _e( 'Location', 'bhx' ); ?></th>
+						<td><?php echo get_post_meta( $post->ID, 'bhx-location', true ); ?></td>
+					</tr>
+					<tr>
+						<th class="label"><?php _e( 'More Information' ); ?></th>
+						<td><?php echo get_post_meta( $post->ID, 'bhx-link', true ); ?></td>
+					</tr>
+				</body>
+			</table>
+		<?php endif; ?>
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
