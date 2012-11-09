@@ -236,52 +236,13 @@ function bhx_post_type_visit_columns_manage( $column, $post_id ) {
 
 	switch( $column ) {
 		case 'category' :
-			$terms = get_the_terms( $post_id, 'visit-type' );
-			
-			if ( ! empty( $terms ) ) {
-				$out = array();
-
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-type' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-type', 'display' ) )
-					);
-				}
-
-				echo join( ', ', $out );
-			}
+			echo get_the_term_list( $post_id, 'visit-type', '', ', ' );
 			break;
 		case 'price' :
-			$terms = get_the_terms( $post_id, 'visit-price' );
-			
-			if ( ! empty( $terms ) ) {
-				$out = array();
-
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-price' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-price', 'display' ) )
-					);
-				}
-
-				echo join( ', ', $out );
-			}
+			echo get_the_term_list( $post_id, 'visit-price', '',  ', ' );
 			break;
 		case 'stars' :
-			$terms = get_the_terms( $post_id, 'visit-stars' );
-			
-			if ( ! empty( $terms ) ) {
-				$out = array();
-
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'visit-stars' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'visit-stars', 'display' ) )
-					);
-				}
-
-				echo join( ', ', $out );
-			}
+			echo get_the_term_list( $post_id, 'visit-stars', '',  ', ' );
 			break;
 		default :
 			break;

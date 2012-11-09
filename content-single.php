@@ -42,12 +42,12 @@ jQuery(document).ready(function($) {
 			<table class="visit-meta">
 				<tbody>
 					<tr>
-						<th class="label">Rating</th>
-						<td>Something</td>
+						<th class="label"><?php _e( 'Price', 'bhx' ); ?></th>
+						<td><?php echo get_the_term_list( $post->ID, 'visit-price', '',  ', ' ); ?></td>
 					</tr>
 					<tr>
-						<th class="label">Stars</th>
-						<td>Something</td>
+						<th class="label"><?php _e( 'Stars', 'bhx' ); ?></th>
+						<td><?php echo get_the_term_list( $post->ID, 'visit-stars', '', ', ' ); ?></td>
 					</tr>
 				</body>
 			</table>

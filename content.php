@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * @package BHX
  * @since BHX 1.0

@@ -145,23 +145,11 @@ function bhx_post_type_educational_columns_manage( $column, $post_id ) {
 
 	switch( $column ) {
 		case 'category' :
-			$terms = get_the_terms( $post_id, 'educational-resource-type' );
-			
-			if ( ! empty( $terms ) ) {
-				$out = array();
-
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'educational-resource-type' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'educational-resource-type', 'display' ) )
-					);
-				}
-
-				echo join( ', ', $out );
-			}
+			echo get_the_term_list( $post_id, 'educational-resource-type', '', ', ' );
 			break;
 		case 'location' :
 			echo 'Somewhere';
+			break;
 		default :
 			break;
 	}
@@ -386,23 +374,11 @@ function bhx_post_type_site_columns_manage( $column, $post_id ) {
 
 	switch( $column ) {
 		case 'category' :
-			$terms = get_the_terms( $post_id, 'site-type' );
-			
-			if ( ! empty( $terms ) ) {
-				$out = array();
-
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'site-type' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'site-type', 'display' ) )
-					);
-				}
-
-				echo join( ', ', $out );
-			}
+			echo get_the_term_list( $post_id, 'site-type', '',  ', ' );
 			break;
 		case 'location' :
 			echo get_post_meta( $post->ID, 'bhx-location', true );
+			break;
 		default :
 			break;
 	}
