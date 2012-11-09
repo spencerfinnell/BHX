@@ -16,14 +16,12 @@
 	<?php get_search_form(); ?>
 </div>
 
-<article id="post-0" class="hentry row">
-	<div class="span14 offset1">
-		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
-			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'bhx' ), admin_url( 'post-new.php' ) ); ?></p>
-		<?php elseif ( is_search() ) : ?>
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bhx' ); ?></p>
-		<?php else : ?>
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'bhx' ); ?></p>
-		<?php endif; ?>
-	</div><!-- .entry-content -->
-</article><!-- #post-0 .post .no-results .not-found -->
+<div class="section">
+	<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+		<p class="page-note"><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'bhx' ), admin_url( 'post-new.php' ) ); ?></p>
+	<?php elseif ( is_search() ) : ?>
+		<p class="page-note"><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bhx' ); ?></p>
+	<?php else : ?>
+		<p class="page-note"><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'bhx' ); ?></p>
+	<?php endif; ?>
+</div>

@@ -678,8 +678,8 @@ function bhx_timeline_json() {
 			continue;
 
 		$content = wp_trim_words( get_the_content(), 35 );
-		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '">Read More &rarr;</a></p>';
-
+		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '" class="fancybox">Read More &rarr;</a></p>';
+		
 		$dates[$count][ 'startDate' ] = $date;
 		$dates[$count][ 'endDate' ]   = $date;
 		$dates[$count][ 'headline' ]  = get_the_title();

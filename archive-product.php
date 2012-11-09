@@ -49,22 +49,26 @@ get_header('shop'); ?>
 
 		<?php else : ?>
 
-			<?php if ( ! woocommerce_product_subcategories( array( 'before' => '<ul class="products">', 'after' => '</ul>' ) ) ) : ?>
+			<div class="section divider">
+				<?php if ( ! woocommerce_product_subcategories( array( 'before' => '<ul class="products">', 'after' => '</ul>' ) ) ) : ?>
 
-				<p><?php _e( 'No products found which match your selection.', 'woocommerce' ); ?></p>
+					<p class="page-note"><?php _e( 'No products found which match your selection.', 'woocommerce' ); ?></p>
 
-			<?php endif; ?>
+				<?php endif; ?>
+			</div>
 
 		<?php endif; ?>
 
-		<?php
-			/**
-			 * woocommerce_pagination hook
-			 *
-			 * @hooked woocommerce_pagination - 10
-			 * @hooked woocommerce_catalog_ordering - 20
-			 */
-			do_action( 'woocommerce_pagination' );
-		?>
+		<div class="section">
+			<?php
+				/**
+				 * woocommerce_pagination hook
+				 *
+				 * @hooked woocommerce_pagination - 10
+				 * @hooked woocommerce_catalog_ordering - 20
+				 */
+				do_action( 'woocommerce_pagination' );
+			?>
+		</div>
 
 <?php get_footer('shop'); ?>
