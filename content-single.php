@@ -15,20 +15,10 @@
 
 <?php if ( has_post_thumbnail() ) : ?>
 	<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ); ?>
-	<div class="featured-hero" style="background-image: url(<?php echo $image[0]; ?>);">
+	<div class="featured-hero">
 		<a class="fancybox" href="<?php echo esc_url( $image[0] ); ?>"><?php the_post_thumbnail(); ?></a>
-		<div class="target"></div>
 	</div>
 <?php endif; ?>
-
-<script>
-jQuery(document).ready(function($) {
-	$( '.target' ).blurjs({
-		radius : 30,
-		source: '.featured-hero'
-	});
-});
-</script>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( $post->post_name, is_page( 'timeline' ) ? '' : 'inner-page' ) ); ?>>
 	<div id="entry-content">
