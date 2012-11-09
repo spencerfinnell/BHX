@@ -45,10 +45,12 @@ jQuery(document).ready(function($) {
 						<th class="label"><?php _e( 'Price', 'bhx' ); ?></th>
 						<td><?php echo get_the_term_list( $post->ID, 'visit-price', '',  ', ' ); ?></td>
 					</tr>
+					<?php if ( ! empty( get_the_terms( $post->ID, 'visit-stars' ) ) ) : ?>
 					<tr>
 						<th class="label"><?php _e( 'Stars', 'bhx' ); ?></th>
 						<td><?php echo get_the_term_list( $post->ID, 'visit-stars', '', ', ' ); ?></td>
 					</tr>
+					<?php endif; ?>
 				</body>
 			</table>
 		<?php endif; ?>
@@ -56,17 +58,22 @@ jQuery(document).ready(function($) {
 		<?php if ( is_singular( 'site' ) ) : ?>
 			<?php
 				$link = esc_url( get_post_meta( $post->ID, 'bhx-link', true ) );
+				$loc  = get_post_meta( $post->ID, 'bhx-location', true );
 			?>
 			<table class="site-meta">
 				<tbody>
+					<?php if ( $loc ) : ?>
 					<tr>
 						<th class="label"><?php _e( 'Location', 'bhx' ); ?></th>
-						<td><?php echo get_post_meta( $post->ID, 'bhx-location', true ); ?></td>
+						<td><?php echo $loc; ?></td>
 					</tr>
+					<?php endif; ?>
+					<?php if ( $link ) : ?>
 					<tr>
 						<th class="label"><?php _e( 'More Information' ); ?></th>
 						<td><a href="<?php echo $link; ?>"><?php echo $link; ?></a></td>
 					</tr>
+					<?php endif; ?>
 				</body>
 			</table>
 		<?php endif; ?>
