@@ -16,7 +16,7 @@
 <?php if ( has_post_thumbnail() ) : ?>
 	<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ); ?>
 	<div class="featured-hero">
-		<a class="fancybox" href="<?php echo esc_url( $image[0] ); ?>"><?php the_post_thumbnail(); ?></a>
+		<a class="fancybox" href="<?php echo esc_url( $image[0] ); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
 	</div>
 <?php endif; ?>
 
