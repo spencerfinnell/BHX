@@ -45,7 +45,10 @@ jQuery(document).ready(function($) {
 						<th class="label"><?php _e( 'Price', 'bhx' ); ?></th>
 						<td><?php echo get_the_term_list( $post->ID, 'visit-price', '',  ', ' ); ?></td>
 					</tr>
-					<?php if ( ! empty( get_the_terms( $post->ID, 'visit-stars' ) ) ) : ?>
+					<?php 
+						$stars = get_the_terms( $post->ID, 'visit-stars' );
+						if ( ! empty( $stars ) ) : 
+					?>
 					<tr>
 						<th class="label"><?php _e( 'Stars', 'bhx' ); ?></th>
 						<td><?php echo get_the_term_list( $post->ID, 'visit-stars', '', ', ' ); ?></td>
