@@ -141,3 +141,5 @@ function bhx_wp_title( $title, $sep ) {
 	return $title;
 }
 add_filter( 'wp_title', 'bhx_wp_title', 10, 2 );
+
+add_filter( 'excerpt_more', '__return_false' );

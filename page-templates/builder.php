@@ -26,7 +26,7 @@ get_header();
 
 				<fieldset id="<?php echo $section; ?>" class="build-criteria">
 					<legend>
-						<label for="include-<?php echo $section; ?>" class="section">
+						<label for="include-<?php echo $section; ?>">
 							<input type="checkbox" name="include-<?php echo $section; ?>" value="<?php echo $section; ?>" id="include-<?php echo $section; ?>" <?php echo ( ! $results ) ? checked(1, in_array( $section, $defaults ), false) : checked( $section, $_POST[ 'include-' . $section ], false ); ?> /> <?php echo ucfirst( $section ); ?>
 						</label>
 					</legend>
