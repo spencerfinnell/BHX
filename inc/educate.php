@@ -653,7 +653,7 @@ function bhx_timeline_json() {
 		if ( ! $date )
 			continue;
 
-		$content = wp_trim_words( get_the_content(), 35 );
+		$content = get_the_excerpt();
 		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '" class="fancybox">Read More &rarr;</a></p>';
 		
 		$dates[$count][ 'startDate' ] = $date;
