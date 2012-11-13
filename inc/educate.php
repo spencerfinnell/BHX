@@ -639,7 +639,8 @@ function bhx_timeline_json() {
 
 	$timeline_args = array(
 		'post_type'      => array( 'timeline' ),
-		'posts_per_page' => -1
+		'posts_per_page' => 5,
+		'order'          => 'DESC'
 	);
 
 	$count = 0;
@@ -654,12 +655,12 @@ function bhx_timeline_json() {
 			continue;
 
 		$content = get_the_excerpt();
-		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '" class="fancybox">Read More &rarr;</a></p>';
+		//$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '" class="fancybox">Read More &rarr;</a></p>';
 		
 		$dates[$count][ 'startDate' ] = $date;
 		$dates[$count][ 'endDate' ]   = $date;
 		$dates[$count][ 'headline' ]  = get_the_title();
-		$dates[$count][ 'text' ]      = wpautop( $content );
+		$dates[$count][ 'text' ]      = $content;
 		$dates[$count][ 'asset' ]     = array(
 			'media' => $image[0]
 		);
