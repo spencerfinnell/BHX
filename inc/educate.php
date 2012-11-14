@@ -677,7 +677,7 @@ function bhx_timeline_json() {
 		)
 	);
 
-	if ( S_GET[ 'array' ] )
+	if ( $_GET[ 'array' ] )
 		print_r( $output );
 	else
 		echo json_encode( $output );
