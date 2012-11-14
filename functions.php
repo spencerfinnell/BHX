@@ -143,3 +143,17 @@ function bhx_excerpt_more() {
 	return '...';
 }
 add_filter( 'excerpt_more', 'bhx_excerpt_more' );
+
+function bhx_pagination() {
+?>
+	<div id="pagination" class="clearfix">
+		<div class="pull-left">
+			<?php previous_posts_link(); ?>
+		</div>
+		<div class="pull-right">
+			<?php next_posts_link(); ?>
+		</div>
+	</div>
+<?php
+}
+do_action( 'bhx_pagination', 'bhx_pagination' );

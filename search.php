@@ -24,6 +24,8 @@ get_header(); ?>
 			<?php endwhile; ?>
 		</div>
 
+		<?php do_action( 'bhx_pagination' ); ?>
+
 	<?php else : ?>
 
 		<?php get_template_part( 'no-results', 'search' ); ?>

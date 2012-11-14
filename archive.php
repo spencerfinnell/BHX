@@ -52,10 +52,7 @@ get_header(); ?>
 			<?php endwhile; ?>
 		</div>
 
-		<div id="pagination">
-			<?php previous_posts_link(); ?>
-			<?php next_posts_link(); ?>
-		</div>
+		<?php do_action( 'bhx_pagination' ); ?>
 
 	<?php else : ?>
 
