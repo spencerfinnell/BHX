@@ -140,11 +140,30 @@ p {
 	#font > .shorthand(16px, normal, 24px);
 }
 
-#pagination {
-	margin: -40px 60px 0;
+#pagination-wrap {
+	margin: -40px 60px 40px;
+	text-align: center;
+}
 
-	a {
+#pagination {
+	border: 1px solid @tableBorder;
+	background: @white;
+	display: inline-block;
+
+	.border-radius(3px);
+	.box-shadow(~"0 1px 5px rgba(0, 0, 0, .05)");
+
+	a,
+	span {
 		font-size: 14px;
 		text-decoration: none;
+
+		padding: 5px 16px 5px 14px;
+		border-right: 1px solid @tableBorder;
+		display: inline-block;
+
+		&:last-child {
+			border-right: 0;
+		}
 	}
 }

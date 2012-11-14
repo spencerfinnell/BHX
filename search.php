@@ -18,18 +18,14 @@ get_header(); ?>
 
 		<div id="stuff-grid">
 			<?php while ( have_posts() ) : the_post(); ?>
-
 				<?php get_template_part( 'content', 'grid' ); ?>
-
 			<?php endwhile; ?>
 		</div>
 
-		<?php do_action( 'bhx_pagination' ); ?>
+		<?php bhx_pagination(); ?>
 
 	<?php else : ?>
-
 		<?php get_template_part( 'no-results', 'search' ); ?>
-
 	<?php endif; ?>
 
 <?php get_footer(); ?>
