@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<?php if ( have_posts() ) : ?>
 
-		<div id="page-header" class="<?php echo $is_visit_tax ? '' : 'no-sorting'; ?>">
+		<div id="page-header" class="<?php echo is_tax() ? '' : 'no-sorting'; ?>">
 			<h1 class="page-title"><span>
 				<?php
 					if ( is_category() ) {

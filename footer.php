@@ -13,7 +13,7 @@
 
 		<footer id="colophon">
 			<div id="contact">
-				<a href="mailto:info@blackheritagexperience.com"><i class="icon-mail"></i> <?php _e( 'Send us an Email', 'bhx' ); ?></a>
+				<a href="<?php echo esc_url( get_permalink( get_page_by_path( 'contact' ) ) ); ?>"><i class="icon-mail"></i> <?php _e( 'Send us an Email', 'bhx' ); ?></a>
 				<a href="tel:9043259679"><i class="icon-phone"></i> <?php _e( '(904) 325-9679', 'bhx' ); ?></a>
 			</div>
 
