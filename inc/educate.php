@@ -676,8 +676,8 @@ function bhx_timeline_json() {
 			'date'           => $dates
 		)
 	);
-
-	echo json_encode( $output );
+	print_r( $output );
+	//echo json_encode( $output );
 
 	die();
 }
