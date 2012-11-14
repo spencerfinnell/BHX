@@ -20,13 +20,13 @@
 	position: relative;
 	overflow: hidden;
 
-	&:nth-child(2n) {
-		margin-right: 0;
-		.pull-right;
-	}
-
 	&.inner-page {
 		margin: 20px 60px 0;
+
+		p:last-child,
+		p:only-child {
+			margin-bottom: 0;
+		}
 	}
 }
 

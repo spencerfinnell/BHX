@@ -48,11 +48,12 @@
 			</table>
 		<?php endif; ?>
 
-		<?php if ( is_singular( 'site' ) ) : ?>
-			<?php
-				$link = esc_url( get_post_meta( $post->ID, 'bhx-link', true ) );
-				$loc  = get_post_meta( $post->ID, 'bhx-location', true );
-			?>
+		<?php
+			$link = esc_url( get_post_meta( $post->ID, 'bhx-link', true ) );
+			$loc  = get_post_meta( $post->ID, 'bhx-location', true );
+		?>
+			
+		<?php if ( is_singular( 'site' ) && ( $link || $loc ) ) : ?>
 			<table class="site-meta">
 				<tbody>
 					<?php if ( $loc ) : ?>
