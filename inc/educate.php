@@ -639,8 +639,7 @@ function bhx_timeline_json() {
 
 	$timeline_args = array(
 		'post_type'      => array( 'timeline' ),
-		'posts_per_page' => 5,
-		'order'          => 'DESC'
+		'posts_per_page' => -1
 	);
 
 	$count = 0;
@@ -655,7 +654,7 @@ function bhx_timeline_json() {
 			continue;
 
 		$content = get_the_excerpt();
-		//$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '" class="fancybox">Read More &rarr;</a></p>';
+		$content .= '<p><a href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read More &rarr;', 'bhx' ) . '</a></p>';
 		
 		$dates[$count][ 'startDate' ] = $date;
 		$dates[$count][ 'endDate' ]   = $date;
