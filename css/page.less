@@ -167,3 +167,40 @@ p {
 		}
 	}
 }
+
+.quotemark {
+	#font > .serif-alt(65px, normal, 78px);
+	color: @white;
+	text-align: center;
+
+	background: @purple;
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	left: -80px;
+
+	.size(56px, 56px);
+	.border-radius(28px);
+}
+
+blockquote {
+	margin: 40px 60px 40px 140px;
+	padding: 0;
+	position: relative;
+
+	cite {
+		#font > .sans-serif(13px, bold, normal);
+		color: @red;
+		text-transform: uppercase;
+		font-style: normal;
+
+		.dash {
+			color: @grayLighter;
+		}
+
+		a {
+			color: @gray;
+			text-decoration: none;
+		}
+	}
+}

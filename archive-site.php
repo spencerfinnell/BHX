@@ -15,7 +15,7 @@ get_header(); ?>
 		<div id="page-header">
 			<h1 class="page-title"><span><?php echo is_post_type_archive() ? post_type_archive_title() : single_term_title(); ?></span></h1>
 			<ul class="page-sorting">
-				<?php bhx_archive_sorting_sites(); ?>
+				<?php bhx_archive_sorting( 'site-type' ); ?>
 			</ul>
 
 			<?php get_search_form(); ?>

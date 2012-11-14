@@ -69,7 +69,6 @@ get_header();
 	</ul><!-- #xstuff -->
 
 	<div id="young" class="container">
-		<span class="quotemark">&#8220;</span>
 		<blockquote>
 			<p class="grabber">For decades, millions upon millions of Florida tourists have visited St. Augustine, which is celebrated as 
 <em>America’s oldest city</em> and known for its vital role the nation’s history, yet almost all those people have come and 

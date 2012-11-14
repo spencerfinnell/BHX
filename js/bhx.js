@@ -5,7 +5,8 @@
     var app, tripbuilder;
     app = {
       init: function() {
-        return this.fancybox();
+        this.fancybox();
+        return this.pages();
       },
       fancybox: function() {
         if ($.fancybox) {
@@ -25,6 +26,11 @@
             });
           });
         }
+      },
+      pages: function() {
+        return $('blockquote').each(function() {
+          return $(this).find('p').prepend('<span class="quotemark">&#8220;</span>');
+        });
       }
     };
     tripbuilder = {

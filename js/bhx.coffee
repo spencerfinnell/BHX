@@ -3,7 +3,8 @@ jQuery ($) ->
 	app =
 		
 		init : () ->
-			this.fancybox();
+			this.fancybox()
+			this.pages()
 
 		fancybox : () ->
 			if ( $.fancybox )
@@ -21,6 +22,10 @@ jQuery ($) ->
 							}
 						}
 					)
+
+		pages : () ->
+			$( 'blockquote' ).each () ->
+				$(@).find( 'p' ).prepend( '<span class="quotemark">&#8220;</span>' )
 
 	tripbuilder = 
 
