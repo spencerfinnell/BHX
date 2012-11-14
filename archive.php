@@ -8,8 +8,6 @@
  * @since BHX 1.0
  */
 
-$is_visit_tax = is_tax( 'visit-type', array( 'tours', 'restaurants', 'attractions', 'lodging' ) );
-
 get_header(); ?>
 
 	<?php if ( have_posts() ) : ?>
@@ -39,9 +37,9 @@ get_header(); ?>
 				?>
 			</span></h1>
 
-			<?php if ( $is_visit_tax ) : ?>
+			<?php if ( is_tax() ) : ?>
 			<ul class="page-sorting">
-				<li><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_builder' ) ) ); ?>"><?php _e( 'Let us help you plan your trip.', 'bhx' ); ?></a></li>
+				<?php bhx_archive_sorting( get_queried_object()->taxonomy ); ?>
 			</ul>
 			<?php endif; ?>
 		</div><!-- .page-header -->

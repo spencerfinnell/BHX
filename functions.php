@@ -139,11 +139,28 @@ function bhx_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'bhx_wp_title', 10, 2 );
 
+/**
+ * Excerpt Ending
+ *
+ * @since BHX 1.0
+ *
+ * @return string Three periods
+ */
 function bhx_excerpt_more() {
 	return '...';
 }
 add_filter( 'excerpt_more', 'bhx_excerpt_more' );
 
+/**
+ * Archive Pagination
+ *
+ * Use numeric links instead of older/newer as those terms don't
+ * have any relevance in most situations.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
 function bhx_pagination() {
 	global $wp_query;
 
@@ -163,4 +180,80 @@ function bhx_pagination() {
 	</div>
 <?php
 }
-do_action( 'bhx_pagination', 'bhx_pagination' );
+
+/**
+ * Taxonomy/Archive Sorting
+ *
+ * Get all terms for a specific taxnomy and output the links.
+ * An action before and after it allows for prepending of other
+ * custom/static links to the lists.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_archive_sorting( $taxonomy = null ) {
+	$terms = get_terms( $taxonomy, array( 'hide_empty' => false ) );
+
+	do_action( 'bhx_archive_sorting_before_' . $taxonomy, $taxonomy );
+
+	foreach ( $terms as $term )  {
+?>
+	<li <?php echo is_tax( $taxonomy, $term->slug ) ? ' class="active"' : ''; ?>>
+		<a href="<?php echo get_term_link( $term->slug, $taxonomy ); ?>"><?php echo esc_attr( $term->name ); ?></a>
+	</li>
+<?php
+	}
+
+	do_action( 'bhx_archive_sorting_after_' . $taxonomy, $taxonomy );
+}
+
+/**
+ * Visit Sorting Links
+ *
+ * Prepend a "Plan a Trip" link before taxonomy links.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_archive_sorting_before_visit_type() {
+?>
+	<li><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_builder' ) ) ); ?>"><?php _e( 'Plan a Trip', 'bhx' ); ?></a></li>
+<?php
+}
+add_action( 'bhx_archive_sorting_before_visit-type', 'bhx_archive_sorting_before_visit_type' );
+
+/**
+ * Educate Sorting Links
+ *
+ * Prepend a "Interactive Timeline" and "Historic Sites" 
+ * links before taxonomy links.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_archive_sorting_before_educational_resource_type() {
+?>
+	<li><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_timeline' ) ) ); ?>"><?php _e( 'Interactive Timeline', 'bhx' ); ?></a></li>
+	<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><?php _e( 'Historic Sites', 'bhx' ); ?></a></li>
+<?php
+}
+add_action( 'bhx_archive_sorting_before_educational-resource-type', 'bhx_archive_sorting_before_educational_resource_type' );
+
+/**
+ * Site Sorting Links
+ *
+ * Prepend a "All" link before taxonomy links.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_archive_sorting_before_site_type() {
+?>
+	<li <?php echo is_post_type_archive() ? ' class="active"' : ''; ?>><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><?php _e( 'All', 'bhx' ); ?></a></li>
+<?php
+}
+add_action( 'bhx_archive_sorting_before_site-type', 'bhx_archive_sorting_before_site_type' );
