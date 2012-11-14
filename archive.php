@@ -52,6 +52,11 @@ get_header(); ?>
 			<?php endwhile; ?>
 		</div>
 
+		<div id="pagination">
+			<?php previous_posts_link(); ?>
+			<?php next_posts_link(); ?>
+		</div>
+
 	<?php else : ?>
 
 		<?php get_template_part( 'no-results', 'archive' ); ?>

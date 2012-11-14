@@ -8,7 +8,7 @@
 
 global $wp_query;
 
-$terms  = get_terms( 'site-type' );
+$terms  = get_terms( 'site-type', array( 'hide_empty' => 0 ) );
 $output = array();
 
 $tax = get_queried_object();
@@ -39,6 +39,11 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content' ); ?>
 			<?php endwhile; ?>
+		</div>
+
+		<div id="pagination">
+			<?php previous_posts_link(); ?>
+			<?php next_posts_link(); ?>
 		</div>
 
 	<?php else : ?>
