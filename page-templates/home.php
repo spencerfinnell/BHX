@@ -52,19 +52,19 @@ get_header();
 		<li class="x-action">
 			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/lipsum/action-knowledge.jpg" alt="" /></a>
 			<h3><span>X</span>pand Your Knowledge</h3>
-			<p>Visit our website for a listing of black history <a herf="#">books</a> and <a href="#">documentaries</a>. Also, don't forget to check out our <a href="#">interactive timeline</a>.</p>
+			<p>Visit our website for a listing of black history <a href="<?php echo get_term_link( 'literature', 'educational-resource-type' ); ?>">books</a> and <a href="<?php echo get_term_link( 'documentary', 'educational-resource-type' ); ?>">documentaries</a>. Also, don't forget to check out our <a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_timeline' ) ) ); ?>">interactive timeline</a>.</p>
 		</li>
 
 		<li class="x-action">
 			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/lipsum/action-excursion.png" alt="" /></a>
 			<h3>Plan Your <span>X</span>cursion</h3>
-			<p>Reserve a walking, carriage, or trolley <a href="#">tour</a> of Saint Augustine's black history. Self-guided tours are also available <a href="#">upon request</a>.</p>
+			<p>Reserve a walking, carriage, or trolley <a href="<?php echo get_term_link( 'tours', 'visit-type' ); ?>">tour</a> of Saint Augustine's black history. Self-guided tours are also available <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'contact' ) ) ); ?>">upon request</a>.</p>
 		</li>
 
 		<li class="x-action">
 			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/lipsum/action-tour.png" alt="" /></a>
 			<h3><span>X</span>plore the History</h3>
-			<p><a href="#">Contact us</a> for recommendations on <a href="#">hotels</a>, <a href="#">restaurants</a>, and <a href="#">other attractions</a> to enjoy while in beautiful Saint Augustine.</p>
+			<p><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'contact' ) ) ); ?>">Contact us</a> for recommendations on <a href="<?php echo get_term_link( 'lodging', 'visit-type' ); ?>">hotels</a>, <a href="<?php echo get_term_link( 'restaurants', 'visit-type' ); ?>">restaurants</a>, and <a href="<?php echo get_term_link( 'attractions', 'visit-type' ); ?>">other attractions</a> to enjoy while in beautiful Saint Augustine.</p>
 		</li>
 	</ul><!-- #xstuff -->
 
