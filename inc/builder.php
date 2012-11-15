@@ -76,7 +76,7 @@ function bhx_builder() {
 				array(
 					'taxonomy' => 'visit-type',
 					'field'    => 'slug',
-					'terms'    => array( 'attraction' )
+					'terms'    => array( 'attractions' )
 				),
 			)
 		);
@@ -92,7 +92,7 @@ function bhx_builder() {
 				array(
 					'taxonomy' => 'visit-type',
 					'field'    => 'slug',
-					'terms'    => array( 'restaraunts' )
+					'terms'    => array( 'restaurants' )
 				),
 			)
 		);
