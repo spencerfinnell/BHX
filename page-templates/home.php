@@ -74,7 +74,7 @@ get_header();
 <em>America’s oldest city</em> and known for its vital role the nation’s history, yet almost all those people have come and 
 gone without hearing a word about the area’s rich African American heritage.</p>
 
-			<cite>Civil Rights Leader, Andrew Young <span class="dash">&mdash;</span> <a href="#">Read the Full Letter &rarr;</a></cite>
+			<cite>Civil Rights Leader, Andrew Young <span class="dash">&mdash;</span> <a href="<?php echo esc_url( get_attachment_link(760) ); ?>">Read the Full Letter &rarr;</a></cite>
 		</blockquote>
 	</div><!-- #young -->
 
