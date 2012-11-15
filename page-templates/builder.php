@@ -55,7 +55,7 @@ get_header();
 			</div>
 
 			<p class="filter">
-				<span class="note">If you have more questions about visiting St. Augustine and getting the ultimate <strong>Black Heritage Xperience</strong>, please do not hesitate to <a href="#">contact us</a> and we will gladly help you.</span>
+				<span class="note">If you have more questions about visiting St. Augustine and getting the ultimate <strong>Black Heritage Xperience</strong>, please do not hesitate to <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'contact' ) ) ); ?>">contact us</a> and we will gladly help you.</span>
 				<input type="submit" name="submit" value="<?php esc_attr_e( 'Search St. Augustine', 'bhx' ); ?>" />
 				<input type="hidden" name="action" value="bhx-trip-builder" />
 			</p>
