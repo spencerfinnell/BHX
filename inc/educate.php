@@ -412,6 +412,24 @@ function bhx_sites_archive() {
 }
 add_action( 'template_redirect', 'bhx_sites_archive' );
 
+/**
+ * 
+ *
+ * @since BHX 1.0
+ *
+ * @param object $query The current query
+ * @return void
+ */
+function bhx_filter_query_documentaries( $query ) {
+	if ( is_admin() )
+		return;
+
+	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' && term_exists( 'documentaries', 'educational-type' ) ) {
+		$query->set( 'orderby', 'name' );
+	}
+}
+add_filter( 'pre_get_posts', 'bhx_filter_query_documentaries' );
+
 /** Timeline **********************************************************************/
 
 /**
