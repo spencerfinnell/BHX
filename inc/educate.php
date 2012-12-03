@@ -424,8 +424,8 @@ function bhx_filter_query_documentaries( $query ) {
 	if ( is_admin() )
 		return;
 
-	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' && term_exists( 'documentary', 'educational-type' ) ) {
-		$query->set( 'orderby', 'name' );
+	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' && term_exists( 'documentary', 'educational-resource-type' ) ) {
+		$query->set( 'orderby', 'title' );
 	}
 }
 add_filter( 'pre_get_posts', 'bhx_filter_query_documentaries' );
