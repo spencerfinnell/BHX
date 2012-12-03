@@ -27,7 +27,9 @@
 
 <div id="section-educate" class="section-modal">
 	<ul id="sections">
-		<li><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_timeline' ) ) ); ?>"><i class="icon-share"></i> <?php _e( 'Timeline', 'bhx' ); ?></a></li>
+		<li class="full"><a href="<?php echo esc_url( get_permalink( bhx_get_theme_option( 'page_timeline' ) ) ); ?>"><i class="icon-share"></i> <?php _e( 'Interactive Timeline', 'bhx' ); ?></a></li>
+		<li class="fake"></li>
+		<li><a href="<?php echo esc_url( get_post_type_archive_link( 'xtraordinary' ) ); ?>"><i class="icon-star"></i> <?php _e( 'Xtraordinary People', 'bhx' ); ?></a></li>
 		<li><a href="<?php echo get_post_type_archive_link( 'site' ); ?>"><i class="icon-picture"></i> <?php _e( 'Historic Sites', 'bhx' ); ?></a></li>
 		<li><a href="<?php echo get_term_link( 'literature', 'educational-resource-type' ); ?>"><i class="icon-newspaper"></i> <?php _e( 'Literature', 'bhx' ); ?></a></li>
 		<li><a href="<?php echo get_term_link( 'documentary', 'educational-resource-type' ); ?>"><i class="icon-mic"></i> <?php _e( 'Documentaries', 'bhx' ); ?></a></li>
