@@ -424,7 +424,7 @@ function bhx_filter_query_documentaries( $query ) {
 	if ( is_admin() )
 		return;
 
-	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' && term_exists( 'documentaries', 'educational-type' ) ) {
+	if ( is_main_query() && is_post_type_archive( 'educational' ) && $query->query_vars['post_type'] != 'nav_menu_item' && term_exists( 'documentary', 'educational-type' ) ) {
 		$query->set( 'orderby', 'name' );
 	}
 }
