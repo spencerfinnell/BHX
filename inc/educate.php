@@ -684,3 +684,51 @@ function bhx_timeline_json() {
 	die();
 }
 add_action( 'template_redirect', 'bhx_timeline_json' );
+
+/** Xtrodinary Ppeople **********************************************************************/
+
+/**
+ * Timeline
+ *
+ * Register the custom post type for the interactive timeline.
+ *
+ * @since BHX 1.0
+ *
+ * @return void
+ */
+function bhx_post_type_xtraordinary() {
+	/** Custom Post Type */
+	$labels = array(
+		'name'               => __( 'Xtraordinary People', 'bhx' ),
+		'singular_name'      => __( 'Xtraordinary', 'bhx' ),
+		'add_new'            => __( 'Add Person', 'bhx' ),
+		'add_new_item'       => __( 'Add New', 'bhx' ),
+		'edit_item'          => __( 'Edit Person', 'bhx' ),
+		'new_item'           => __( 'New Person', 'bhx' ),
+		'all_items'          => __( 'Xtraordinary People', 'bhx' ),
+		'view_item'          => __( 'View Person', 'bhx' ),
+		'search_items'       => __( 'Search People', 'bhx' ),
+		'not_found'          => __( 'No items found', 'bhx' ),
+		'not_found_in_trash' => __( 'No items found in Trash', 'bhx' ), 
+		'parent_item_colon'  => __( 'Person: ', 'bhx' ),
+		'menu_name'          => __( 'Xtraordinary People', 'bhx' )
+	);
+	
+	$args = array(
+		'labels'              => $labels,
+		'public'              => true,
+		'rewrite'             => array(
+			'slug'       => 'person',
+			'with_front' => false
+		),
+		'capability_type'     => 'post',
+		'has_archive'         => 'xtraordinary', 
+		'hierarchical'        => false,
+		'menu_position'       => null,
+		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'show_in_menu'        => 'edit.php?post_type=educational'
+	);
+
+	register_post_type( 'xtraordinary', $args );
+}
+add_action( 'init', 'bhx_post_type_xtraordinary' );
