@@ -20,19 +20,29 @@ get_header();
 	</div><!-- #search -->
 
 	<div id="featured-slider" class="divider row">
-		<div id="featured-slider-text" class="span4 offset1">
+		<div id="featured-slider-text" class="featured-slider-slides span4 offset1">
 			<ul>
+				<?php
+					$slider_args = array(
+						'post_type' => array( 'educational', 'site', 'visit' ),
+						'posts_per_page' => 5,
+						'orderby' => 'rand'
+					);
+
+					$slider = new WP_Query( $slider_args );
+
+					while ( $slider->have_posts() ) : $slider->the_post();
+				?>
 				<li>
-					<h3>BHX's Featured Person of the Week</h3>
+					<h3><?php the_title(); ?></h3>
 
-					<p>Did you know? The legendary singer Ray Charles went to school here in St. Augustine.</p>
-
-					<p>Ray attended <a href="#">Florida School for the Deaf and Blind</a>, formerly named The Institute for the Blind, Deaf and Dumb, after becoming blind during his youth.</p>
+					<?php the_excerpt(); ?>
 
 					<p class="learn">
-						<a href="#" class="button">Learn More</a>
+						<a href="<?php the_permalink(); ?>" class="button"><?php _e( 'Learn More', 'bhx' ); ?></a>
 					</p>
 				</li>
+				<?php endwhile; ?>
 			</ul>
 
 			<div id="featured-slider-navigation">
@@ -43,7 +53,9 @@ get_header();
 
 		<div id="featured-slider-image" class="span10">
 			<ul>
-				<li><a href="#"><img src="images/lipsum/charles.jpg" alt="" width="580" height="300" /></a></li>
+				<?php while ( $slider->have_posts() ) : $slider->the_post(); ?>
+				<li><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'home-slider' ); ?></a></li>
+				<?php endwhile; ?>
 			</ul>
 		</div>
 	</div><!-- #featured-slider -->

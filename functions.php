@@ -65,6 +65,7 @@ function bhx_setup() {
 	) );
 
 	add_image_size( 'content-grid', 400, 125, true );
+	add_image_size( 'home-slider', 580, 300, true );
 }
 endif; // bhx_setup
 add_action( 'after_setup_theme', 'bhx_setup' );
@@ -81,7 +82,7 @@ function bhx_scripts() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/js/fancybox.min.js' );
 
-	if ( is_home() )
+	if ( is_home() || is_front_page() )
 		wp_enqueue_script( 'jcarousellite', get_template_directory_uri() . '/js/jcarousellite.min.js' );
 
 	if ( is_archive() || is_search() )

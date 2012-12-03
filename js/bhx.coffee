@@ -1,9 +1,9 @@
 jQuery ($) ->
 
 	app =
-		
 		init : () ->
 			this.fancybox()
+			this.home()
 			this.pages()
 
 		fancybox : () ->
@@ -23,12 +23,17 @@ jQuery ($) ->
 						}
 					)
 
+		home : () ->
+			if $( '#featured-slider' ).length
+				$( '.featured-slider-slides' ).jCarousellite () ->
+					btnNext : $( '#featured-slider-navigation .next' )
+					btnPrev : $( '#featured-slider-navigation .prev' )
+
 		pages : () ->
 			$( 'blockquote' ).each () ->
 				$(@).find( 'p' ).prepend( '<span class="quotemark">&#8220;</span>' )
 
 	tripbuilder = 
-
 		init : () ->
 			this.filter();
 
